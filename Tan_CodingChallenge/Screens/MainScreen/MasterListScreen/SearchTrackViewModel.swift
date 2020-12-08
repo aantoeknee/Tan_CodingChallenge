@@ -61,6 +61,7 @@ extension SearchTrackViewModel {
     pushDetailsController(viewModel: viewModel)
   }
   
+  
   func cellViewModel(indexPath: IndexPath) -> TrackCellViewModel {
     
     let track = filteredTracks[indexPath.item]

@@ -49,20 +49,29 @@ class SearchTrackController: UIViewController {
 
 extension SearchTrackController: UICollectionViewDataSource {
   
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  func collectionView(_ collectionView: UICollectionView,
+                      numberOfItemsInSection section: Int) -> Int {
     return viewModel?.count ?? 0
   }
   
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+  func collectionView(_ collectionView: UICollectionView,
+                      cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
-    viewModel?.collectionView(collectionView, cellForItemAt: indexPath) ?? UICollectionViewCell()
+    viewModel?.collectionView(collectionView,
+                              cellForItemAt: indexPath) ?? UICollectionViewCell()
   }
   
 }
 
 extension SearchTrackController: UICollectionViewDelegate {
   
-  
+  func collectionView(_ collectionView: UICollectionView,
+                      didSelectItemAt indexPath: IndexPath) {
+    
+    viewModel?.collectionView(collectionView,
+                              didSelectItemAt: indexPath,
+                              controller: self)
+  }
 }
 
 extension SearchTrackController: UICollectionViewDelegateFlowLayout {
