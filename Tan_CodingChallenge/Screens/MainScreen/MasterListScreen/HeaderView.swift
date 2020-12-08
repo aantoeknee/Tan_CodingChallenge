@@ -15,12 +15,12 @@ class HeaderView: UICollectionReusableView {
   static let cellIdentifier = String(describing: HeaderView.self)
   
   override func prepareForReuse() {
-    let lastAcitivity = LastVisited().getLastTrack()?.dateTime
+    let date = AppPreferences.getDate()
     
-    if lastAcitivity != nil {
-      self.dateLabel.text = "Last activity was on \(LastVisited().getLastTrack()?.dateTime ?? "")"
+    if date != nil {
+      self.dateLabel.text = "You recently visited on \(date ?? "")"
     } else {
-      self.dateLabel.text = "No recent activity"
+      self.dateLabel.text = "No recent views"
     }
   }
 }

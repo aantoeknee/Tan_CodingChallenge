@@ -22,7 +22,6 @@ public class TrackService {
         do {
           let model = try decoder.decode(TrackResponse.self, from: response.data!)
           let tracks = model.results
-          self.track.deleteAll()
           self.track.saveAll(tracks: tracks)
           completion(self.track.queryAll())
         }

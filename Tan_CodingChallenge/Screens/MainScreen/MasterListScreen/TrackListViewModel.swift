@@ -52,7 +52,6 @@ public class TrackListViewModel {
     let track = tracks[indexPath.item]
     let viewModel = DetailsViewModel(track: track)
     pushDetailsController(viewModel: viewModel)
-    saveLastVisitedTrack(indexPath: indexPath)
   }
   
   func cellViewModel(indexPath: IndexPath) -> TrackCellViewModel {
@@ -67,11 +66,4 @@ public class TrackListViewModel {
     let trackListCoordinator = TrackListCoordinator(navigationController: navCon)
     trackListCoordinator.pushDetailsController(viewModel: viewModel)
   }
-  
-  func saveLastVisitedTrack(indexPath: IndexPath) {
-    let dateTime = Date().toString(format: "MMM d, h:mm a")
-    let track = tracks[indexPath.item]
-    LastVisited().saveTrack(track: track, date: dateTime)
-  }
-  
 }

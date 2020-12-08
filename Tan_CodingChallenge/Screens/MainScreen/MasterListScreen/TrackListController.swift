@@ -12,12 +12,9 @@ class TrackListController: UIViewController {
   @IBOutlet weak var collectionView: UICollectionView!
   
   var viewModel = TrackListViewModel()
-  let lastVisitedTrack = LastVisited()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    let track = lastVisitedTrack.getLastTrack()
-    print("DATE TIME: \(track?.dateTime)")
     self.collectionView = setupCollectionView(collectionView: self.collectionView)
   }
   
