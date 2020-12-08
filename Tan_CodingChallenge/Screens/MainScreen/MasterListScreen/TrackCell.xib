@@ -20,8 +20,9 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Acb-YK-ATL">
                         <rect key="frame" x="0.0" y="0.0" width="210" height="348"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sampleimage" translatesAutoresizingMaskIntoConstraints="NO" id="bIv-S9-PVu">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bIv-S9-PVu">
                                 <rect key="frame" x="8" y="8" width="194" height="332"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
                             </imageView>
                             <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cRG-m5-FMp">
                                 <rect key="frame" x="8" y="8" width="194" height="332"/>
@@ -85,9 +86,11 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="sampleimage" width="124" height="165"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
