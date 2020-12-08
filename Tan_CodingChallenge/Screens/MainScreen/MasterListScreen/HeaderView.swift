@@ -18,7 +18,7 @@ class HeaderView: UICollectionReusableView {
     let date = AppPreferences.getDate()
     
     if date != nil {
-      self.dateLabel.text = "You recently viewed on \(date ?? "")"
+      self.dateLabel.text = "You recently visited on \(date ?? "")"
     } else {
       self.dateLabel.text = "No recent views"
     }
