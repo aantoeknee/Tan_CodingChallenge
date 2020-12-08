@@ -100,38 +100,19 @@
                                                         </constraints>
                                                         <state key="normal" image="play"/>
                                                         <connections>
-                                                            <action selector="previewButton:" destination="7ng-ie-AnR" eventType="touchUpInside" id="dwE-Cc-XyP"/>
+                                                            <action selector="previewClicked:" destination="7ng-ie-AnR" eventType="touchUpInside" id="7DN-YD-wAm"/>
                                                         </connections>
                                                     </button>
-                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mp9-Ma-DHO">
-                                                        <rect key="frame" x="101" y="42" width="170" height="48"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Preview Available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sb-6d-TxK">
+                                                        <rect key="frame" x="100.5" y="54" width="165" height="20.5"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <connections>
-                                                            <action selector="openSafariClicked:" destination="7ng-ie-AnR" eventType="touchUpInside" id="Yea-Bf-Go2"/>
-                                                        </connections>
-                                                    </button>
-                                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="vLD-s0-sD1">
-                                                        <rect key="frame" x="100.5" y="41.5" width="165" height="45"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Preview Available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sb-6d-TxK">
-                                                                <rect key="frame" x="0.0" y="0.0" width="165" height="20.5"/>
-                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[ Open in Safari ]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESu-ZX-e4x">
-                                                                <rect key="frame" x="0.0" y="24.5" width="165" height="20.5"/>
-                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                                <color key="textColor" systemColor="linkColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="vLD-s0-sD1" firstAttribute="centerX" secondItem="Rpt-Ra-9jk" secondAttribute="centerX" id="1wn-y9-URH"/>
-                                                    <constraint firstItem="vLD-s0-sD1" firstAttribute="centerY" secondItem="Rpt-Ra-9jk" secondAttribute="centerY" id="Be0-lf-aaz"/>
                                                     <constraint firstAttribute="width" constant="366" id="D0M-3Z-6K8"/>
                                                     <constraint firstItem="16m-MK-Hrc" firstAttribute="centerX" secondItem="Rpt-Ra-9jk" secondAttribute="centerX" id="SGc-L7-oME"/>
                                                     <constraint firstItem="16m-MK-Hrc" firstAttribute="centerY" secondItem="Rpt-Ra-9jk" secondAttribute="centerY" id="cAC-CH-JIr"/>
@@ -146,7 +127,7 @@
                                                     <constraint firstAttribute="width" constant="101" id="Jci-eY-DbN"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch My Body" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBo-7S-udp">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch My Body" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBo-7S-udp">
                                                 <rect key="frame" x="137" y="168" width="265" height="43"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="265" id="8XG-4h-4oh"/>
@@ -163,7 +144,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slt-r4-XZu">
-                                                <rect key="frame" x="137" y="259.5" width="265" height="27.5"/>
+                                                <rect key="frame" x="137" y="255.5" width="265" height="27.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -186,7 +167,7 @@
                                             <constraint firstAttribute="width" constant="414" id="Mxd-kY-C7B"/>
                                             <constraint firstItem="XxD-W8-qyq" firstAttribute="top" secondItem="vBo-7S-udp" secondAttribute="bottom" constant="16" id="SPe-Uy-fRm"/>
                                             <constraint firstItem="XxD-W8-qyq" firstAttribute="leading" secondItem="17a-Yw-8ol" secondAttribute="trailing" constant="12" id="W1H-ck-lFB"/>
-                                            <constraint firstItem="slt-r4-XZu" firstAttribute="top" secondItem="XxD-W8-qyq" secondAttribute="bottom" constant="12" id="ajM-rL-Qt0"/>
+                                            <constraint firstItem="slt-r4-XZu" firstAttribute="top" secondItem="XxD-W8-qyq" secondAttribute="bottom" constant="8" id="ajM-rL-Qt0"/>
                                             <constraint firstItem="slt-r4-XZu" firstAttribute="leading" secondItem="17a-Yw-8ol" secondAttribute="trailing" constant="12" id="biC-Xa-1Y8"/>
                                             <constraint firstAttribute="trailing" secondItem="vBo-7S-udp" secondAttribute="trailing" constant="12" id="dL3-Yc-8Db"/>
                                             <constraint firstItem="Rpt-Ra-9jk" firstAttribute="leading" secondItem="hTl-ws-IDW" secondAttribute="leading" constant="24" id="fa5-U2-UcI"/>
@@ -220,9 +201,9 @@
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
                         <outlet property="artwork" destination="17a-Yw-8ol" id="oAo-3T-8PM"/>
-                        <outlet property="openSafariB" destination="mp9-Ma-DHO" id="piH-QI-KY0"/>
-                        <outlet property="openSafariStack" destination="vLD-s0-sD1" id="NGQ-Wu-CRH"/>
+                        <outlet property="noPreviewL" destination="6sb-6d-TxK" id="MDI-Xq-Ba5"/>
                         <outlet property="playerView" destination="Rpt-Ra-9jk" id="OPs-ER-Ebv"/>
+                        <outlet property="previewButton" destination="16m-MK-Hrc" id="Srx-F7-yne"/>
                         <outlet property="trackDescription" destination="TBo-iq-g0B" id="Tb7-OR-5On"/>
                         <outlet property="trackGenre" destination="XxD-W8-qyq" id="9Hn-gK-3dt"/>
                         <outlet property="trackName" destination="vBo-7S-udp" id="zbn-iV-TTk"/>
@@ -289,9 +270,6 @@
         <image name="play" width="56" height="56"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

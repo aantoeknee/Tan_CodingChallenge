@@ -23,11 +23,13 @@ public class TrackService {
           let model = try decoder.decode(TrackResponse.self, from: response.data!)
           let tracks = model.results
           
-          // Delete track objects to avoid duplication
+          // Delete previous data to avoid duplication
           self.track.deleteAll()
           
           // Save newly retrieved data
           self.track.saveAll(tracks: tracks)
+          
+          // Return all queried data
           completion(self.track.queryAll())
         }
         catch {
@@ -36,6 +38,7 @@ public class TrackService {
     
         }
       case .failure:
+        // If unable to retrieve data, get data from the local database
         print("Failed retrieving data")
         completion(self.track.queryAll())
   
