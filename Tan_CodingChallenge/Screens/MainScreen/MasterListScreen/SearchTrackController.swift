@@ -19,6 +19,7 @@ class SearchTrackController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.collectionView = setupCollectionView(collectionView: self.collectionView)
     initSearch()
   }
   
@@ -30,16 +31,12 @@ class SearchTrackController: UIViewController {
       .throttle(.milliseconds(400), scheduler: MainScheduler.instance)
       .subscribe(onNext: { [unowned self] searchInput in
         self.viewModel?.filterPatients(query: searchInput)
+        collectionView.reloadData()
     }).disposed(by: disposeBag)
   }
   
   private func setupCollectionView(collectionView: UICollectionView) -> UICollectionView {
     let nibCell = UINib(resource: R.nib.trackCell)
-    let nibHeader = UINib(nibName: HeaderView.cellIdentifier, bundle: nil)
-    
-    collectionView.register(nibHeader,
-                            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                            withReuseIdentifier: HeaderView.cellIdentifier)
     
     collectionView.register(nibCell, forCellWithReuseIdentifier: TrackCell.cellIdentifier)
     
@@ -70,5 +67,10 @@ extension SearchTrackController: UICollectionViewDelegate {
 
 extension SearchTrackController: UICollectionViewDelegateFlowLayout {
   
-  
+  func collectionView(_ collectionView: UICollectionView,
+                      layout collectionViewLayout: UICollectionViewLayout,
+                      sizeForItemAt indexPath: IndexPath) -> CGSize {
+    
+    return CGSize(width: (view.frame.width) / 2, height: (view.frame.width - 16) / 1.5)
+  }
 }

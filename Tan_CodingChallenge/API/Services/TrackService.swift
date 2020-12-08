@@ -22,6 +22,11 @@ public class TrackService {
         do {
           let model = try decoder.decode(TrackResponse.self, from: response.data!)
           let tracks = model.results
+          
+          // Delete track objects to avoid duplication
+          self.track.deleteAll()
+          
+          // Save newly retrieved data
           self.track.saveAll(tracks: tracks)
           completion(self.track.queryAll())
         }

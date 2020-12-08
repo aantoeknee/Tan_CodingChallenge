@@ -40,7 +40,7 @@ class TrackListController: UIViewController {
   
   //Search button clicked
   @IBAction func searchButtonClicked(_ sender: Any) {
-    viewModel
+    viewModel.pushSearchController(controller: self)
   }
 }
 
@@ -80,9 +80,7 @@ extension TrackListController: UICollectionViewDelegate {
                              controller: self)
   }
   
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-    return CGSize(width: collectionView.frame.width, height: 45.0)
-      }
+
 }
 
 extension TrackListController: UICollectionViewDelegateFlowLayout {
@@ -92,6 +90,13 @@ extension TrackListController: UICollectionViewDelegateFlowLayout {
                       sizeForItemAt indexPath: IndexPath) -> CGSize {
     
     return CGSize(width: (view.frame.width) / 2, height: (view.frame.width - 16) / 1.5)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView,
+                      layout collectionViewLayout: UICollectionViewLayout,
+                      referenceSizeForHeaderInSection section: Int) -> CGSize {
+    
+    return CGSize(width: collectionView.frame.width, height: 45.0)
   }
 }
 

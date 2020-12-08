@@ -302,9 +302,14 @@ struct _R: Rswift.Validatable {
       let bundle = R.hostingBundle
       let detailsController = StoryboardViewControllerResource<DetailsController>(identifier: "DetailsController")
       let name = "Main"
+      let searchTrackController = StoryboardViewControllerResource<SearchTrackController>(identifier: "SearchTrackController")
 
       func detailsController(_: Void = ()) -> DetailsController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: detailsController)
+      }
+
+      func searchTrackController(_: Void = ()) -> SearchTrackController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: searchTrackController)
       }
 
       static func validate() throws {
@@ -313,6 +318,7 @@ struct _R: Rswift.Validatable {
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
         if _R.storyboard.main().detailsController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'detailsController' could not be loaded from storyboard 'Main' as 'DetailsController'.") }
+        if _R.storyboard.main().searchTrackController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'searchTrackController' could not be loaded from storyboard 'Main' as 'SearchTrackController'.") }
       }
 
       fileprivate init() {}

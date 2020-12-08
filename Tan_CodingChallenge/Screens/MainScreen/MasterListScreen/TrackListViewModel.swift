@@ -73,5 +73,10 @@ extension TrackListViewModel {
     trackListCoordinator.pushDetailsController(viewModel: viewModel)
   }
   
-  func pushSearchController()
+  func pushSearchController(controller: TrackListController) {
+    guard let navCon = controller.navigationController else { return }
+    let searchCoordinator = TrackListCoordinator(navigationController: navCon)
+    let viewModel = SearchTrackViewModel(tracks: tracks)
+    searchCoordinator.pushSearchController(viewModel: viewModel)
+  }
 }
