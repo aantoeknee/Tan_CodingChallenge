@@ -102,7 +102,12 @@ extension TrackListController: UICollectionViewDelegateFlowLayout {
                       layout collectionViewLayout: UICollectionViewLayout,
                       sizeForItemAt indexPath: IndexPath) -> CGSize {
     
-    return CGSize(width: (view.frame.width) / 2, height: (view.frame.width - 16) / 1.5)
+    if UIDevice.current.orientation.isLandscape {
+      return CGSize(width: (view.frame.width) / 4, height: (view.frame.width - 16) / 3.5)
+    } else {
+      return CGSize(width: (view.frame.width) / 2, height: (view.frame.width - 16) / 1.5)
+    }
+    
   }
   
   func collectionView(_ collectionView: UICollectionView,
