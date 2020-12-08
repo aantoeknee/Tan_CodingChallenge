@@ -11,16 +11,19 @@ import UIKit
 
 class DetailsController: UIViewController {
   
+  // MARK: - IBOutlets
+  
   @IBOutlet weak var playerView: UIView!
-  @IBOutlet weak var openSafariStack: UIStackView!
   @IBOutlet weak var artwork: UIImageView!
   @IBOutlet weak var previewButton: UIButton!
-  
   @IBOutlet weak var trackName: UILabel!
   @IBOutlet weak var trackGenre: UILabel!
   @IBOutlet weak var trackPrice: UILabel!
   @IBOutlet weak var trackDescription: UILabel!
   @IBOutlet weak var noPreviewL: UILabel!
+
+  
+  // MARK: - Properties
   
   var viewModel: DetailsViewModel? = nil
   var previewUrl: String? = nil
@@ -29,6 +32,8 @@ class DetailsController: UIViewController {
     super.viewDidLoad()
     initViews()
   }
+  
+  // MARK: - Initialize Views
   
   private func initViews() {
     self.trackName.text = viewModel?.name
@@ -53,14 +58,19 @@ class DetailsController: UIViewController {
     }
   }
   
+  // MARK: - Preview Button Clicked
+  
   @IBAction func previewClicked(_ sender: Any) {
-    // Open Media Player
     guard let previewUrl = self.previewUrl else { return }
     let url = URL(string: previewUrl)
+    
     let player = AVPlayer(url: url!)
     let playerController = AVPlayerViewController()
     playerController.player = player
+    
     self.navigationController?.pushViewController(playerController, animated: true)
+    
+    // Start playing the video/audio
     player.play()
   }
 }

@@ -9,9 +9,12 @@ import Foundation
 
 public class TrackCellViewModel {
   
+  // MARK: - Properties
+  
   var track: Track? = nil
   
   var name: String? {
+    // If trackName is empty, returns collectionName
     return track?.name == nil ?
       track?.collectionName :
       track?.name
@@ -29,6 +32,7 @@ public class TrackCellViewModel {
     return "$ \(track?.price ?? 0.0)"
   }
   
+  // MARK: - Initializer
   
   init(track: Track) {
     self.track = track

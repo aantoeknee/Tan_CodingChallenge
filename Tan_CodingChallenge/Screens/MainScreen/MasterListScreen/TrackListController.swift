@@ -9,6 +9,8 @@ import UIKit
 
 class TrackListController: UIViewController {
   
+  // MARK: - IBOutlets
+  
   @IBOutlet weak var collectionView: UICollectionView!
   
   var viewModel = TrackListViewModel()
@@ -19,9 +21,12 @@ class TrackListController: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
+    // Retrieve Tracks from DB
     viewModel.getTracks(collectionView: self.collectionView)
   }
 
+  // MARK: - INITIALIZE UICOLLECTIONVIEW
+  
   private func setupCollectionView(collectionView: UICollectionView) -> UICollectionView {
     let nibCell = UINib(resource: R.nib.trackCell)
     let nibHeader = UINib(nibName: HeaderView.cellIdentifier, bundle: nil)
@@ -38,11 +43,14 @@ class TrackListController: UIViewController {
     return collectionView
   }
   
-  //Search button clicked
+  // MARK: - Search Button Clicked
+  
   @IBAction func searchButtonClicked(_ sender: Any) {
     viewModel.pushSearchController(controller: self)
   }
 }
+
+// MARK: - UICollectionView Data Source
 
 extension TrackListController: UICollectionViewDataSource {
   
@@ -70,6 +78,9 @@ extension TrackListController: UICollectionViewDataSource {
       return headerView
     }
 }
+
+// MARK: - UICollectionView Delegates
+
 extension TrackListController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView,
@@ -82,6 +93,8 @@ extension TrackListController: UICollectionViewDelegate {
   
 
 }
+
+// MARK: - UICollectionView Delegate Flow Layout
 
 extension TrackListController: UICollectionViewDelegateFlowLayout {
   

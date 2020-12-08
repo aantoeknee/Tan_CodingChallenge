@@ -10,6 +10,8 @@ import UIKit
 
 class TrackListViewModel {
   
+  // MARK: - Properties
+  
   var trackService = TrackService()
   var tracks: [Track] = []
   
@@ -19,8 +21,8 @@ class TrackListViewModel {
     return tracks.count
   }
   
+  // Retrieves Tracks and reload collection view.
   func getTracks(collectionView: UICollectionView) {
-    
     trackService.getTracks() { tracks in
       if tracks.isEmpty {
         print("unable to retrieve tracks")
@@ -31,8 +33,17 @@ class TrackListViewModel {
       }
     }
   }
-}
   
+  // Create instance of TrackCellViewModel
+  func cellViewModel(indexPath: IndexPath) -> TrackCellViewModel {
+    let track = tracks[indexPath.item]
+    let cellViewModel = TrackCellViewModel(track: track)
+    return cellViewModel
+  }
+}
+
+// MARK: - UICollectionView Data Source
+
 extension TrackListViewModel {
   
   func collectionView(_ collectionView: UICollectionView,
@@ -56,15 +67,9 @@ extension TrackListViewModel {
     let viewModel = DetailsViewModel(track: track)
     pushDetailsController(viewModel: viewModel)
   }
-  
-  func cellViewModel(indexPath: IndexPath) -> TrackCellViewModel {
-    
-    let track = tracks[indexPath.item]
-    let cellViewModel = TrackCellViewModel(track: track)
-    return cellViewModel
-  }
 }
 
+// MARK: - Navigation Functions
 extension TrackListViewModel {
   
   func pushDetailsController(viewModel: DetailsViewModel) {

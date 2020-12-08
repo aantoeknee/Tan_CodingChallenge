@@ -9,6 +9,8 @@ import Foundation
 
 struct TrackResponse: Decodable {
   
+  // MARK: - Properties
+  
    var resultCount: Int
    var results: [Track]
 }
