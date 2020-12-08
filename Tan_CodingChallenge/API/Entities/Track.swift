@@ -11,6 +11,8 @@ import RealmSwift
 
 class Track: Object, Decodable {
   
+  // MARK: - Properties
+  
   @objc dynamic var wrapperType = ""
   @objc dynamic var kind: String? = nil
   @objc dynamic var name: String? = nil
@@ -23,6 +25,7 @@ class Track: Object, Decodable {
   @objc dynamic var desc: String? = nil
   @objc dynamic var previewUrl: String? = nil
   
+  // MARK: - Coding Keys
   
   private enum CodingKeys: String, CodingKey {
     
@@ -40,10 +43,12 @@ class Track: Object, Decodable {
   }
 }
 
-// MARK:
+// MARK: Realm Functions
+
 extension Track {
   
   // Save all tracks retrieved from the API consumption
+  
   public func saveAll(tracks: [Track]) {
     let realm = try! Realm()
     for track in tracks {
@@ -54,6 +59,7 @@ extension Track {
   }
   
   // Queary All tracks and pass it to the caller
+  
   public func queryAll() -> [Track] {
     let realm = try! Realm()
     let tracks = Array(realm.objects(Track.self))
@@ -61,6 +67,7 @@ extension Track {
   }
   
   // Delete all Tracks
+  
   public func deleteAll() {
     do {
       let realm = try Realm()
@@ -70,12 +77,6 @@ extension Track {
       }
     } catch {
       print(error)
-    }
-  }
-  
-  public func saveDate() {
-    let realm = try! Realm()
-    try! realm.write {
     }
   }
 }

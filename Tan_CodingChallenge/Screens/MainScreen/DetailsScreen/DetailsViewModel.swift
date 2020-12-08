@@ -9,6 +9,8 @@ import Foundation
 
 public class DetailsViewModel {
   
+  // MARK: - Properties
+  
   var track: Track? = nil
   
   var wrapperType: String {
@@ -20,6 +22,7 @@ public class DetailsViewModel {
   }
   
   var name: String? {
+    // If trackName is empty, returns collectionName
     return track?.name == nil ?
       track?.collectionName :
       track?.name
@@ -49,11 +52,13 @@ public class DetailsViewModel {
     if longDesc != nil {
       return longDesc ?? ""
     } else if shortDesc != nil {
-      return shortDesc ?? ""
+      return shortDesc ?? "" // If long description is empty, returns short description
     } else {
-      return desc ?? "No description available"
+      return desc ?? "No description available" // If long short is empty returns description
     }
   }
+  
+  // MARK: - Initializer
   
   init(track: Track) {
     self.track = track

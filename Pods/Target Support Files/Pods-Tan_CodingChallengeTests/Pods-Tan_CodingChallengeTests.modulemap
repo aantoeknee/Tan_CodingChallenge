@@ -1,0 +1,6 @@
+framework module Pods_Tan_CodingChallengeTests {
+  umbrella header "Pods-Tan_CodingChallengeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

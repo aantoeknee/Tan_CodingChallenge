@@ -9,6 +9,8 @@ import UIKit
 
 class TrackListController: UIViewController {
   
+  // MARK: - IBOutlets
+  
   @IBOutlet weak var collectionView: UICollectionView!
   
   var viewModel = TrackListViewModel()
@@ -19,9 +21,12 @@ class TrackListController: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
+    // Retrieve Tracks from DB
     viewModel.getTracks(collectionView: self.collectionView)
   }
 
+  // MARK: - INITIALIZE UICOLLECTIONVIEW
+  
   private func setupCollectionView(collectionView: UICollectionView) -> UICollectionView {
     let nibCell = UINib(resource: R.nib.trackCell)
     let nibHeader = UINib(nibName: HeaderView.cellIdentifier, bundle: nil)
@@ -38,7 +43,14 @@ class TrackListController: UIViewController {
     return collectionView
   }
   
+  // MARK: - Search Button Clicked
+  
+  @IBAction func searchButtonClicked(_ sender: Any) {
+    viewModel.pushSearchController(controller: self)
+  }
 }
+
+// MARK: - UICollectionView Data Source
 
 extension TrackListController: UICollectionViewDataSource {
   
@@ -66,6 +78,9 @@ extension TrackListController: UICollectionViewDataSource {
       return headerView
     }
 }
+
+// MARK: - UICollectionView Delegates
+
 extension TrackListController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView,
@@ -76,10 +91,10 @@ extension TrackListController: UICollectionViewDelegate {
                              controller: self)
   }
   
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-    return CGSize(width: collectionView.frame.width, height: 45.0)
-      }
+
 }
+
+// MARK: - UICollectionView Delegate Flow Layout
 
 extension TrackListController: UICollectionViewDelegateFlowLayout {
   
@@ -87,7 +102,19 @@ extension TrackListController: UICollectionViewDelegateFlowLayout {
                       layout collectionViewLayout: UICollectionViewLayout,
                       sizeForItemAt indexPath: IndexPath) -> CGSize {
     
-    return CGSize(width: (view.frame.width) / 2, height: (view.frame.width - 16) / 1.5)
+    if UIDevice.current.orientation.isLandscape {
+      return CGSize(width: (view.frame.width) / 4, height: (view.frame.width - 16) / 3.5)
+    } else {
+      return CGSize(width: (view.frame.width) / 2, height: (view.frame.width - 16) / 1.5)
+    }
+    
+  }
+  
+  func collectionView(_ collectionView: UICollectionView,
+                      layout collectionViewLayout: UICollectionViewLayout,
+                      referenceSizeForHeaderInSection section: Int) -> CGSize {
+    
+    return CGSize(width: collectionView.frame.width, height: 45.0)
   }
 }
 

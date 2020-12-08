@@ -8,7 +8,9 @@
 import Foundation
 import UIKit
 
-public class TrackListViewModel {
+class TrackListViewModel {
+  
+  // MARK: - Properties
   
   var trackService = TrackService()
   var tracks: [Track] = []
@@ -19,8 +21,8 @@ public class TrackListViewModel {
     return tracks.count
   }
   
+  // Retrieves Tracks and reload collection view.
   func getTracks(collectionView: UICollectionView) {
-    
     trackService.getTracks() { tracks in
       if tracks.isEmpty {
         print("unable to retrieve tracks")
@@ -31,6 +33,18 @@ public class TrackListViewModel {
       }
     }
   }
+  
+  // Create instance of TrackCellViewModel
+  func cellViewModel(indexPath: IndexPath) -> TrackCellViewModel {
+    let track = tracks[indexPath.item]
+    let cellViewModel = TrackCellViewModel(track: track)
+    return cellViewModel
+  }
+}
+
+// MARK: - UICollectionView Data Source
+
+extension TrackListViewModel {
   
   func collectionView(_ collectionView: UICollectionView,
                       cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -53,17 +67,21 @@ public class TrackListViewModel {
     let viewModel = DetailsViewModel(track: track)
     pushDetailsController(viewModel: viewModel)
   }
-  
-  func cellViewModel(indexPath: IndexPath) -> TrackCellViewModel {
-    
-    let track = tracks[indexPath.item]
-    let cellViewModel = TrackCellViewModel(track: track)
-    return cellViewModel
-  }
+}
+
+// MARK: - Navigation Functions
+extension TrackListViewModel {
   
   func pushDetailsController(viewModel: DetailsViewModel) {
     guard let navCon = controller?.navigationController else { return }
     let trackListCoordinator = TrackListCoordinator(navigationController: navCon)
     trackListCoordinator.pushDetailsController(viewModel: viewModel)
+  }
+  
+  func pushSearchController(controller: TrackListController) {
+    guard let navCon = controller.navigationController else { return }
+    let searchCoordinator = TrackListCoordinator(navigationController: navCon)
+    let viewModel = SearchTrackViewModel(tracks: tracks)
+    searchCoordinator.pushSearchController(viewModel: viewModel)
   }
 }
