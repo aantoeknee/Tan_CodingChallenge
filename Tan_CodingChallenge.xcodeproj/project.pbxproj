@@ -31,10 +31,10 @@
 		E4B6742A257E76A20048E78F /* TrackCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B67429257E76A20048E78F /* TrackCellViewModel.swift */; };
 		E4B674B1257E955B0048E78F /* DetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B674B0257E955B0048E78F /* DetailsController.swift */; };
 		E4B674EE257EA1180048E78F /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B674ED257EA1180048E78F /* DetailsViewModel.swift */; };
-		E4E76A07257FCDAD002D8C21 /* AppPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E76A06257FCDAD002D8C21 /* AppPreferences.swift */; };
 		E4E76A0C257FD826002D8C21 /* SearchTrackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E76A0B257FD826002D8C21 /* SearchTrackController.swift */; };
 		E4E76A1D257FDAF1002D8C21 /* SearchTrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E76A1C257FDAF1002D8C21 /* SearchTrackViewModel.swift */; };
 		E4E76A34257FE496002D8C21 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E76A33257FE496002D8C21 /* R.generated.swift */; };
+		E4E76A7725800DEE002D8C21 /* RecentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E76A7625800DEE002D8C21 /* RecentDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,10 +91,10 @@
 		E4B67429257E76A20048E78F /* TrackCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCellViewModel.swift; sourceTree = "<group>"; };
 		E4B674B0257E955B0048E78F /* DetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsController.swift; sourceTree = "<group>"; };
 		E4B674ED257EA1180048E78F /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
-		E4E76A06257FCDAD002D8C21 /* AppPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreferences.swift; sourceTree = "<group>"; };
 		E4E76A0B257FD826002D8C21 /* SearchTrackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTrackController.swift; sourceTree = "<group>"; };
 		E4E76A1C257FDAF1002D8C21 /* SearchTrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTrackViewModel.swift; sourceTree = "<group>"; };
 		E4E76A33257FE496002D8C21 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = Tan_CodingChallenge/R.generated.swift; sourceTree = SOURCE_ROOT; };
+		E4E76A7625800DEE002D8C21 /* RecentDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +164,6 @@
 			isa = PBXGroup;
 			children = (
 				E4E76A33257FE496002D8C21 /* R.generated.swift */,
-				E4E76A05257FCDA2002D8C21 /* Utilities */,
 				E4B67474257E85BA0048E78F /* Extensions */,
 				E4B6737A257E4E020048E78F /* API */,
 				E4B6735B257E46300048E78F /* Screens */,
@@ -269,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				E4B673F6257E640A0048E78F /* Track.swift */,
+				E4E76A7625800DEE002D8C21 /* RecentDate.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -287,14 +287,6 @@
 				E4A2AC9F257F8EE500BC2EC3 /* Date.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		E4E76A05257FCDA2002D8C21 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				E4E76A06257FCDAD002D8C21 /* AppPreferences.swift */,
-			);
-			path = Utilities;
 			sourceTree = "<group>";
 		};
 		FEBAE8DDBB03239D952912EF /* Frameworks */ = {
@@ -571,7 +563,6 @@
 				E4B67425257E76970048E78F /* TrackListViewModel.swift in Sources */,
 				E4B67372257E4DAB0048E78F /* TrackCell.swift in Sources */,
 				E4E76A1D257FDAF1002D8C21 /* SearchTrackViewModel.swift in Sources */,
-				E4E76A07257FCDAD002D8C21 /* AppPreferences.swift in Sources */,
 				E4B673F7257E640A0048E78F /* Track.swift in Sources */,
 				E4B674EE257EA1180048E78F /* DetailsViewModel.swift in Sources */,
 				E4B674B1257E955B0048E78F /* DetailsController.swift in Sources */,
@@ -581,6 +572,7 @@
 				E4B6742A257E76A20048E78F /* TrackCellViewModel.swift in Sources */,
 				E4E76A34257FE496002D8C21 /* R.generated.swift in Sources */,
 				E4A2ACA0257F8EE500BC2EC3 /* Date.swift in Sources */,
+				E4E76A7725800DEE002D8C21 /* RecentDate.swift in Sources */,
 				E4A2ACAA257FA19200BC2EC3 /* TrackListCoordinator.swift in Sources */,
 				E4B67320257E29C80048E78F /* AppDelegate.swift in Sources */,
 				E4E76A0C257FD826002D8C21 /* SearchTrackController.swift in Sources */,

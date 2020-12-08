@@ -21,11 +21,11 @@ class HeaderView: UICollectionReusableView {
   
   // MARK: - Initialize HeaderView with value.
   private func setupView() {
-    let date = AppPreferences.getDate() //Retrieve saved date in UserDefaults
-    if date != nil {
+    let date = RecentDate().getDate() //Retrieve saved date in UserDefaults
+    if date != nil && date != "" {
       self.dateLabel.text = "You recently visited on \(date ?? "")" // If saved date available
     } else {
-      self.dateLabel.text = "No recent views" // No saved date
+      self.dateLabel.text = "No recent visit" // No saved date
     }
   }
 }
