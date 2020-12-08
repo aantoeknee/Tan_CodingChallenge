@@ -17,12 +17,14 @@ class TrackListCoordinator {
     self.navigationController = navigationController
   }
   
+  // MARK: - Push Details Controller
   func pushDetailsController(viewModel: DetailsViewModel) {
     let detailsController = R.storyboard.main.detailsController()!
     detailsController.viewModel = viewModel
     navigationController?.pushViewController(detailsController, animated: true)
   }
   
+  // MARK: - Push Search Controller
   func pushSearchController(viewModel: SearchTrackViewModel) {
     let searchController = R.storyboard.main.searchTrackController()!
     searchController.viewModel = viewModel

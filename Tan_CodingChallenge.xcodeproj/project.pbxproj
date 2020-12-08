@@ -94,7 +94,7 @@
 		E4E76A06257FCDAD002D8C21 /* AppPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreferences.swift; sourceTree = "<group>"; };
 		E4E76A0B257FD826002D8C21 /* SearchTrackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTrackController.swift; sourceTree = "<group>"; };
 		E4E76A1C257FDAF1002D8C21 /* SearchTrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTrackViewModel.swift; sourceTree = "<group>"; };
-		E4E76A33257FE496002D8C21 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		E4E76A33257FE496002D8C21 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = Tan_CodingChallenge/R.generated.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,8 +163,8 @@
 		E4B6731E257E29C80048E78F /* Tan_CodingChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				E4E76A33257FE496002D8C21 /* R.generated.swift */,
 				E4E76A05257FCDA2002D8C21 /* Utilities */,
-				E4B674F2257EAC4E0048E78F /* Resources */,
 				E4B67474257E85BA0048E78F /* Extensions */,
 				E4B6737A257E4E020048E78F /* API */,
 				E4B6735B257E46300048E78F /* Screens */,
@@ -287,14 +287,6 @@
 				E4A2AC9F257F8EE500BC2EC3 /* Date.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		E4B674F2257EAC4E0048E78F /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				E4E76A33257FE496002D8C21 /* R.generated.swift */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		E4E76A05257FCDA2002D8C21 /* Utilities */ = {

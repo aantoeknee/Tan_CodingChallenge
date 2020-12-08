@@ -6,14 +6,16 @@
 //
 
 import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
 
 class SearchTrackController: UIViewController {
   
+  //MARK: - IBOutlets
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var searchTF: UITextField!
   
+  // MARK: - Properties
   let disposeBag = DisposeBag()
   var viewModel: SearchTrackViewModel? = nil
   
@@ -23,6 +25,8 @@ class SearchTrackController: UIViewController {
     initSearch()
   }
   
+  // MARK: - Initialize Search TextField
+  
   private func initSearch() {
     searchTF.rx.text
       .orEmpty
@@ -30,7 +34,7 @@ class SearchTrackController: UIViewController {
       .distinctUntilChanged()
       .throttle(.milliseconds(400), scheduler: MainScheduler.instance)
       .subscribe(onNext: { [unowned self] searchInput in
-        self.viewModel?.filterPatients(query: searchInput)
+        self.viewModel?.filterTracks(query: searchInput)
         collectionView.reloadData()
     }).disposed(by: disposeBag)
   }
@@ -46,6 +50,8 @@ class SearchTrackController: UIViewController {
     return collectionView
   }
 }
+
+// MARK: - UICollectionView Data Source
 
 extension SearchTrackController: UICollectionViewDataSource {
   
@@ -63,6 +69,8 @@ extension SearchTrackController: UICollectionViewDataSource {
   
 }
 
+// MARK: - UICollectionView Delegates
+
 extension SearchTrackController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView,
@@ -73,6 +81,9 @@ extension SearchTrackController: UICollectionViewDelegate {
                               controller: self)
   }
 }
+
+
+// MARK: - UICollectionView Delegate Flow Layout
 
 extension SearchTrackController: UICollectionViewDelegateFlowLayout {
   

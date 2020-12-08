@@ -23,10 +23,13 @@ class SearchTrackViewModel {
   }
 }
 
-// MARK: Extension
+
+
 extension SearchTrackViewModel {
   
-  func filterPatients(query: String) {
+  // MARK: Filter function for search
+  
+  func filterTracks(query: String) {
     let newArray = tracks.filter {
       $0.name?.lowercased().contains(query.lowercased()) ?? false
         || $0.genre.lowercased().contains(query.lowercased())
@@ -34,9 +37,18 @@ extension SearchTrackViewModel {
     }
     filteredTracks = newArray
   }
+  
+  // MARK: Create Instance of TrackCellViewModel
+  
+  func cellViewModel(indexPath: IndexPath) -> TrackCellViewModel {
+    let track = filteredTracks[indexPath.item]
+    let cellViewModel = TrackCellViewModel(track: track)
+    return cellViewModel
+  }
 }
 
-// MARK: Extension
+// MARK: - UICollectionView Data Source
+
 extension SearchTrackViewModel {
   
   func collectionView(_ collectionView: UICollectionView,
@@ -50,6 +62,11 @@ extension SearchTrackViewModel {
     
     return cell
   }
+}
+
+// MARK: - UICollectionView Delegates
+
+extension SearchTrackViewModel {
   
   func collectionView(_ collectionView: UICollectionView,
                       didSelectItemAt indexPath: IndexPath,
@@ -60,14 +77,11 @@ extension SearchTrackViewModel {
     let viewModel = DetailsViewModel(track: track)
     pushDetailsController(viewModel: viewModel)
   }
-  
-  
-  func cellViewModel(indexPath: IndexPath) -> TrackCellViewModel {
-    
-    let track = filteredTracks[indexPath.item]
-    let cellViewModel = TrackCellViewModel(track: track)
-    return cellViewModel
-  }
+}
+
+// MARK: -  Navigation Functions
+
+extension SearchTrackViewModel {
   
   func pushDetailsController(viewModel: DetailsViewModel) {
     guard let navCon = controller?.navigationController else { return }
