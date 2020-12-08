@@ -38,6 +38,10 @@ class TrackListController: UIViewController {
     return collectionView
   }
   
+  //Search button clicked
+  @IBAction func searchButtonClicked(_ sender: Any) {
+    viewModel
+  }
 }
 
 extension TrackListController: UICollectionViewDataSource {

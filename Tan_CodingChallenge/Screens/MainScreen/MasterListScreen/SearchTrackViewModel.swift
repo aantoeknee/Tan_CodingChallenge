@@ -1,39 +1,43 @@
 //
-//  TrackListViewModel.swift
+//  SearchTrackViewModel.swift
 //  Tan_CodingChallenge
 //
-//  Created by Anthony Angelo Tan on 12/7/20.
+//  Created by Anthony Angelo Tan on 12/9/20.
 //
 
 import Foundation
 import UIKit
 
-class TrackListViewModel {
+class SearchTrackViewModel {
   
-  var trackService = TrackService()
+  var controller: SearchTrackController?
   var tracks: [Track] = []
-  
-  var controller: TrackListController?
+  var filteredTracks: [Track] = []
   
   var count: Int {
-    return tracks.count
+    return self.filteredTracks.count
   }
   
-  func getTracks(collectionView: UICollectionView) {
-    
-    trackService.getTracks() { tracks in
-      if tracks.isEmpty {
-        print("unable to retrieve tracks")
-        collectionView.reloadData()
-      } else {
-        self.tracks = tracks
-        collectionView.reloadData()
-      }
-    }
+  init(tracks: [Track]) {
+    self.tracks = tracks
   }
 }
+
+// MARK: Extension
+extension SearchTrackViewModel {
   
-extension TrackListViewModel {
+  func filterPatients(query: String) {
+    let newArray = tracks.filter {
+      $0.name?.lowercased().contains(query.lowercased()) ?? false
+        || $0.genre.lowercased().contains(query.lowercased())
+        || String($0.price).contains(query.lowercased())
+    }
+    filteredTracks = newArray
+  }
+}
+
+// MARK: Extension
+extension SearchTrackViewModel {
   
   func collectionView(_ collectionView: UICollectionView,
                       cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -49,29 +53,24 @@ extension TrackListViewModel {
   
   func collectionView(_ collectionView: UICollectionView,
                       didSelectItemAt indexPath: IndexPath,
-                      controller: TrackListController) {
+                      controller: SearchTrackController) {
     
     self.controller = controller
-    let track = tracks[indexPath.item]
+    let track = filteredTracks[indexPath.item]
     let viewModel = DetailsViewModel(track: track)
     pushDetailsController(viewModel: viewModel)
   }
   
   func cellViewModel(indexPath: IndexPath) -> TrackCellViewModel {
     
-    let track = tracks[indexPath.item]
+    let track = filteredTracks[indexPath.item]
     let cellViewModel = TrackCellViewModel(track: track)
     return cellViewModel
   }
-}
-
-extension TrackListViewModel {
   
   func pushDetailsController(viewModel: DetailsViewModel) {
     guard let navCon = controller?.navigationController else { return }
     let trackListCoordinator = TrackListCoordinator(navigationController: navCon)
     trackListCoordinator.pushDetailsController(viewModel: viewModel)
   }
-  
-  func pushSearchController()
 }
