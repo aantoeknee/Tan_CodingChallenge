@@ -42,6 +42,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tracks" id="Orr-ic-uKp">
+                        <barButtonItem key="leftBarButtonItem" image="arrow.clockwise" catalog="system" id="vp4-90-Xcw">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="refreshButtonClicked:" destination="BYZ-38-t0r" id="62w-g1-XJq"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="magnifyingglass" catalog="system" id="hxT-8c-Jmk">
                             <color key="tintColor" systemColor="labelColor"/>
                             <connections>
@@ -266,6 +272,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="play" width="56" height="56"/>
         <systemColor name="labelColor">

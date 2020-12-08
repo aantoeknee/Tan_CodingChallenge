@@ -43,6 +43,9 @@ class TrackListController: UIViewController {
     return collectionView
   }
   
+  @IBAction func refreshButtonClicked(_ sender: Any) {
+    viewModel.getTracks(collectionView: self.collectionView)
+  }
   // MARK: - Search Button Clicked
   
   @IBAction func searchButtonClicked(_ sender: Any) {
@@ -107,7 +110,6 @@ extension TrackListController: UICollectionViewDelegateFlowLayout {
     } else {
       return CGSize(width: (view.frame.width) / 2, height: (view.frame.width - 16) / 1.5)
     }
-    
   }
   
   func collectionView(_ collectionView: UICollectionView,

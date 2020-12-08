@@ -313,8 +313,9 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
-        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "magnifyingglass") == nil { throw Rswift.ValidationError(description: "[R.swift] System image named 'magnifyingglass' is used in storyboard 'Main', but couldn't be loaded.") } }
         if UIKit.UIImage(named: "play", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'play' is used in storyboard 'Main', but couldn't be loaded.") }
+        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "arrow.clockwise") == nil { throw Rswift.ValidationError(description: "[R.swift] System image named 'arrow.clockwise' is used in storyboard 'Main', but couldn't be loaded.") } }
+        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "magnifyingglass") == nil { throw Rswift.ValidationError(description: "[R.swift] System image named 'magnifyingglass' is used in storyboard 'Main', but couldn't be loaded.") } }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
         if _R.storyboard.main().detailsController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'detailsController' could not be loaded from storyboard 'Main' as 'DetailsController'.") }
