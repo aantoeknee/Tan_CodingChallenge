@@ -20,7 +20,7 @@ The app saves all tracks that were retrieved when the app has started.
 
 The persistence framework used in this app is RealmSwift.
 I used this framework because it is where I am comfortable with compared to CoreData.
-In my personal experience, RealmSwift was easier to learn and easier to implement because of their specific documentations.
+In my personal experience, RealmSwift was easier to learn and easier to implement because of their clear and straightforward documentations.
 
 In downloading and saving images, I used the Kingfisher swift library.
 
