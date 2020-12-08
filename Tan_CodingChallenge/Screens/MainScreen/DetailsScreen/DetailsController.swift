@@ -14,12 +14,13 @@ class DetailsController: UIViewController {
   @IBOutlet weak var playerView: UIView!
   @IBOutlet weak var openSafariStack: UIStackView!
   @IBOutlet weak var artwork: UIImageView!
-  @IBOutlet weak var openSafariB: UIButton!
+  @IBOutlet weak var previewButton: UIButton!
   
   @IBOutlet weak var trackName: UILabel!
   @IBOutlet weak var trackGenre: UILabel!
   @IBOutlet weak var trackPrice: UILabel!
   @IBOutlet weak var trackDescription: UILabel!
+  @IBOutlet weak var noPreviewL: UILabel!
   
   var viewModel: DetailsViewModel? = nil
   var previewUrl: String? = nil
@@ -30,7 +31,6 @@ class DetailsController: UIViewController {
   }
   
   private func initViews() {
-    
     self.trackName.text = viewModel?.name
     self.trackGenre.text = viewModel?.genre
     self.trackPrice.text = viewModel?.price
@@ -41,23 +41,26 @@ class DetailsController: UIViewController {
     let urlRequest = URL(string: artworkUrl!)
     self.artwork.kf.setImage(with: urlRequest)
     
-    self.previewUrl = viewModel?.previewUrl
+    // Determine if previewUrl is empty to hide preview button
+    let previewUrl = viewModel?.previewUrl
+    if previewUrl == nil {
+      previewButton.isHidden = true
+      noPreviewL.isHidden = false
+    } else {
+      previewButton.isHidden = false
+      noPreviewL.isHidden = true
+      self.previewUrl = previewUrl
+    }
   }
   
-  @IBAction func previewButton(_ sender: Any) {
-    
+  @IBAction func previewClicked(_ sender: Any) {
     // Open Media Player
-    let url = URL(string: previewUrl!)
+    guard let previewUrl = self.previewUrl else { return }
+    let url = URL(string: previewUrl)
     let player = AVPlayer(url: url!)
     let playerController = AVPlayerViewController()
     playerController.player = player
     self.navigationController?.pushViewController(playerController, animated: true)
     player.play()
-  }
-  
-  @IBAction func openSafariClicked(_ sender: Any) {
-    guard let previewUrl = self.previewUrl else { return }
-    guard let url = URL(string: previewUrl) else { return }
-    UIApplication.shared.open(url)
   }
 }
