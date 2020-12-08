@@ -22,4 +22,10 @@ class TrackListCoordinator {
     detailsController.viewModel = viewModel
     navigationController?.pushViewController(detailsController, animated: true)
   }
+  
+  func pushSearchController(viewModel: SearchTrackViewModel) {
+    let searchController = R.storyboard.main.searchTrackController()!
+    searchController.viewModel = viewModel
+    navigationController?.pushViewController(searchController, animated: true)
+  }
 }
