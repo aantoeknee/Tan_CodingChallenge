@@ -28,13 +28,13 @@ extension SearchTrackViewModel {
   // MARK: Filter function for search
 
   func filterTracks(query: String) {
-    
     if query == "" {
       filteredTracks = tracks
     } else {
       let newArray = tracks.filter {
         $0.name?.lowercased().contains(query.lowercased()) ?? false
           || $0.genre.lowercased().contains(query.lowercased())
+          || $0.collectionName?.lowercased().contains(query.lowercased()) ?? false
           || String($0.price).contains(query.lowercased())
       }
       filteredTracks = newArray

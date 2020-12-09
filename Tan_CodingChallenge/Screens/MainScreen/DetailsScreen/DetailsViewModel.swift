@@ -47,7 +47,7 @@ public class DetailsViewModel {
   var description: String {
     let longDesc = track?.longDesc
     let shortDesc = track?.longDesc
-    let desc = track?.desc
+    let desc = track?.desc?.html2AttributedString
     
     if longDesc != nil {
       return longDesc ?? ""

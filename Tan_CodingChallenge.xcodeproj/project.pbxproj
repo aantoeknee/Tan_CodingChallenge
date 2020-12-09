@@ -37,6 +37,7 @@
 		E4E76AF325806212002D8C21 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E76AF225806212002D8C21 /* R.generated.swift */; };
 		E4E76B7C25806A34002D8C21 /* Controllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E76B7B25806A34002D8C21 /* Controllers.swift */; };
 		E4E76BD82580899B002D8C21 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E76BD72580899B002D8C21 /* Reachability.swift */; };
+		E4E76D002580E73E002D8C21 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E76CFF2580E73E002D8C21 /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		E4E76AF225806212002D8C21 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		E4E76B7B25806A34002D8C21 /* Controllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controllers.swift; sourceTree = "<group>"; };
 		E4E76BD72580899B002D8C21 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		E4E76CFF2580E73E002D8C21 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +293,7 @@
 			children = (
 				E4A2AC9F257F8EE500BC2EC3 /* Date.swift */,
 				E4E76B7B25806A34002D8C21 /* Controllers.swift */,
+				E4E76CFF2580E73E002D8C21 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				E4B67320257E29C80048E78F /* AppDelegate.swift in Sources */,
 				E4E76A0C257FD826002D8C21 /* SearchTrackController.swift in Sources */,
 				E4B67322257E29C80048E78F /* SceneDelegate.swift in Sources */,
+				E4E76D002580E73E002D8C21 /* String.swift in Sources */,
 				E4E76BD82580899B002D8C21 /* Reachability.swift in Sources */,
 				E4A2AC96257F84B800BC2EC3 /* HeaderView.swift in Sources */,
 			);
