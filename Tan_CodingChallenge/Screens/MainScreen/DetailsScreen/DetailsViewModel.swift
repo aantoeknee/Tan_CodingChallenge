@@ -23,7 +23,9 @@ public class DetailsViewModel {
   
   var name: String? {
     // If trackName is empty, returns collectionName
-    return "Test "
+    return track?.name == nil ?
+      track?.collectionName :
+      track?.name
   }
   
   var artWorkUrl: String {
