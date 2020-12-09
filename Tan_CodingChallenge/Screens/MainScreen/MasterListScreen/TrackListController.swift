@@ -13,6 +13,7 @@ class TrackListController: UIViewController {
   // MARK: - IBOutlets
   
   @IBOutlet weak var collectionView: UICollectionView!
+  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   
   // Initializer
   let refreshControl = UIRefreshControl()
@@ -30,12 +31,12 @@ class TrackListController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
+    activityIndicator.startAnimating()
+    collectionView.isScrollEnabled = false
+    
     viewModel.getTracks(collectionView: self.collectionView) { [self] isEmpty in
-      if isEmpty {
-//        showSnackBar(message: "Please try refreshing the table")
-      } else {
-        
-      }
+      collectionView.isScrollEnabled = true
+      activityIndicator.stopAnimating()
       self.refreshControl.endRefreshing()
     }
   }

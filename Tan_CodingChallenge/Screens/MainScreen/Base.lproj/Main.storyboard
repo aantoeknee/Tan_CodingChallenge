@@ -31,10 +31,19 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="KBf-0L-dEc">
+                                <rect key="frame" x="165" y="311" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="9PB-O0-RI1"/>
+                                    <constraint firstAttribute="height" constant="45" id="u0U-Sg-1KH"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="KBf-0L-dEc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IdS-ni-4gy"/>
+                            <constraint firstItem="KBf-0L-dEc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="V3D-Xt-f0w"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="as0-oe-lxo" secondAttribute="trailing" id="cEe-q0-9sz"/>
                             <constraint firstItem="as0-oe-lxo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jTw-M8-Mi8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="as0-oe-lxo" secondAttribute="bottom" id="o1I-dD-S6K"/>
@@ -50,6 +59,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="KBf-0L-dEc" id="H1A-pI-WdA"/>
                         <outlet property="collectionView" destination="as0-oe-lxo" id="eGS-EW-jsT"/>
                     </connections>
                 </viewController>

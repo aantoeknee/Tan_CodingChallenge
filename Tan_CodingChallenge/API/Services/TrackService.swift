@@ -16,7 +16,7 @@ public class TrackService {
   // MARK: - GET Data from API
   
   func getTracks(completion: @escaping (_ tracks: [Track]) -> ()) {
-    AF.request(url, method: .get).responseJSON { response in
+    AF.request(url, method: .get, requestModifier: { $0.timeoutInterval = 10 }).responseJSON { response in
       
       switch response.result {
       case .success:
