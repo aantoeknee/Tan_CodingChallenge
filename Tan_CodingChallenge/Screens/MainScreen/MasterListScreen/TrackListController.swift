@@ -14,15 +14,20 @@ class TrackListController: UIViewController {
   @IBOutlet weak var collectionView: UICollectionView!
   
   var viewModel = TrackListViewModel()
+  let refreshControl = UIRefreshControl()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.collectionView = setupCollectionView(collectionView: self.collectionView)
+    initRefreshControler()
   }
   
+  // Retrieve Tracks from DB
+  
   override func viewWillAppear(_ animated: Bool) {
-    // Retrieve Tracks from DB
-    viewModel.getTracks(collectionView: self.collectionView)
+    viewModel.getTracks(collectionView: self.collectionView) {
+      self.refreshControl.endRefreshing()
+    }
   }
 
   // MARK: - INITIALIZE UICOLLECTIONVIEW
@@ -37,15 +42,25 @@ class TrackListController: UIViewController {
     
     collectionView.register(nibCell, forCellWithReuseIdentifier: TrackCell.cellIdentifier)
     
+    collectionView.refreshControl = refreshControl
     collectionView.dataSource = self
     collectionView.delegate = self
     
     return collectionView
   }
   
-  @IBAction func refreshButtonClicked(_ sender: Any) {
-    viewModel.getTracks(collectionView: self.collectionView)
+  private func initRefreshControler() {
+    refreshControl.addTarget(self, action: #selector(fetchData), for: .valueChanged)
   }
+  
+  // Fetch Tracks Data when pulling to refresh
+  
+  @objc private func fetchData(_ sender: Any) {
+    viewModel.getTracks(collectionView: self.collectionView) {
+      self.refreshControl.endRefreshing()
+    }
+  }
+  
   // MARK: - Search Button Clicked
   
   @IBAction func searchButtonClicked(_ sender: Any) {
@@ -93,8 +108,6 @@ extension TrackListController: UICollectionViewDelegate {
                              didSelectItemAt: indexPath,
                              controller: self)
   }
-  
-
 }
 
 // MARK: - UICollectionView Delegate Flow Layout
