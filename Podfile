@@ -10,7 +10,7 @@ target 'Tan_CodingChallenge' do
   pod 'Kingfisher', '~> 5.8.3'
   pod 'R.swift'
   pod 'RealmSwift', '~> 10.2.0'
-  pod 'ReachabilitySwift'
+
   pod 'RxSwift', '6.0.0-rc.2'
   pod 'RxCocoa', '6.0.0-rc.2'
   pod "TTGSnackbar"

@@ -7,6 +7,7 @@
 
 import Foundation
 import Reachability
+import SystemConfiguration
 import TTGSnackbar
 import UIKit
 
@@ -38,12 +39,8 @@ extension UIViewController {
 extension UIViewController {
   
   func networkAvailability() {
-    NetworkManager.isReachable { networkManagerInstance in
-
-    }
-    NetworkManager.isUnreachable { networkManagerInstance in
+    if !Reachability.isConnectedToNetwork() {
       self.showSnackBar(message: "No internet connection")
     }
   }
 }
-
