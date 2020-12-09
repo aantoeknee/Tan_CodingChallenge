@@ -23,17 +23,17 @@ class TrackListViewModel {
   
   // Retrieves Tracks and reload collection view.
   func getTracks(collectionView: UICollectionView,
-                 completion: @escaping () -> ()) {
+                 completion: @escaping (_ isEmpty: Bool) -> ()) {
     
     trackService.getTracks() { tracks in
       if tracks.isEmpty {
         print("unable to retrieve tracks")
         collectionView.reloadData()
-        completion()
+        completion(true)
       } else {
         self.tracks = tracks
         collectionView.reloadData()
-        completion()
+        completion(false)
       }
     }
   }
