@@ -47,8 +47,7 @@ public class TrackService {
     
         }
       case .failure:
-        // If unable to retrieve data, get data from the local database
-        
+        // If unable to retrieve data
         print("Failed retrieving data")
         completion(self.track.queryAll())
   
