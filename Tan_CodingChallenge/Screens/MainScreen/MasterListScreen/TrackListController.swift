@@ -105,7 +105,7 @@ extension TrackListController: UICollectionViewDataSource {
                                           for: indexPath)
     
       return headerView
-    }
+  }
 }
 
 // MARK: - UICollectionView Delegates
