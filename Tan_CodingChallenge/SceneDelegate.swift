@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import TTGSnackbar
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -18,7 +17,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let _ = (scene as? UIWindowScene) else { return }
 
     RecentDate().saveDate()
-
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {
