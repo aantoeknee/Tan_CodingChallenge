@@ -35,6 +35,8 @@
 		E4E76A1D257FDAF1002D8C21 /* SearchTrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E76A1C257FDAF1002D8C21 /* SearchTrackViewModel.swift */; };
 		E4E76A7725800DEE002D8C21 /* RecentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E76A7625800DEE002D8C21 /* RecentDate.swift */; };
 		E4E76AF325806212002D8C21 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E76AF225806212002D8C21 /* R.generated.swift */; };
+		E4E76B3825806582002D8C21 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E76B3725806582002D8C21 /* NetworkManager.swift */; };
+		E4E76B7C25806A34002D8C21 /* Controllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E76B7B25806A34002D8C21 /* Controllers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,8 @@
 		E4E76A1C257FDAF1002D8C21 /* SearchTrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTrackViewModel.swift; sourceTree = "<group>"; };
 		E4E76A7625800DEE002D8C21 /* RecentDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentDate.swift; sourceTree = "<group>"; };
 		E4E76AF225806212002D8C21 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		E4E76B3725806582002D8C21 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		E4E76B7B25806A34002D8C21 /* Controllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controllers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				E4E76AF225806212002D8C21 /* R.generated.swift */,
+				E4E76B6F258068E3002D8C21 /* Utils */,
+				E4E76B3625806562002D8C21 /* Network */,
 				E4B67474257E85BA0048E78F /* Extensions */,
 				E4B6737A257E4E020048E78F /* API */,
 				E4B6735B257E46300048E78F /* Screens */,
@@ -285,8 +291,24 @@
 			isa = PBXGroup;
 			children = (
 				E4A2AC9F257F8EE500BC2EC3 /* Date.swift */,
+				E4E76B7B25806A34002D8C21 /* Controllers.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E4E76B3625806562002D8C21 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E4E76B3725806582002D8C21 /* NetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E4E76B6F258068E3002D8C21 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		FEBAE8DDBB03239D952912EF /* Frameworks */ = {
@@ -560,6 +582,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4E76B3825806582002D8C21 /* NetworkManager.swift in Sources */,
 				E4B67425257E76970048E78F /* TrackListViewModel.swift in Sources */,
 				E4B67372257E4DAB0048E78F /* TrackCell.swift in Sources */,
 				E4E76A1D257FDAF1002D8C21 /* SearchTrackViewModel.swift in Sources */,
@@ -570,6 +593,7 @@
 				E4B67406257E64C10048E78F /* TrackService.swift in Sources */,
 				E4B6740C257E663C0048E78F /* TrackResponse.swift in Sources */,
 				E4B6742A257E76A20048E78F /* TrackCellViewModel.swift in Sources */,
+				E4E76B7C25806A34002D8C21 /* Controllers.swift in Sources */,
 				E4A2ACA0257F8EE500BC2EC3 /* Date.swift in Sources */,
 				E4E76AF325806212002D8C21 /* R.generated.swift in Sources */,
 				E4E76A7725800DEE002D8C21 /* RecentDate.swift in Sources */,

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import TTGSnackbar
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,6 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let _ = (scene as? UIWindowScene) else { return }
     
     // Check connection
+
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {

@@ -5,6 +5,7 @@
 //  Created by Anthony Angelo Tan on 12/7/20.
 //
 
+import TTGSnackbar
 import UIKit
 
 class TrackListController: UIViewController {
@@ -14,8 +15,9 @@ class TrackListController: UIViewController {
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var noTracksFoundL: UILabel!
   
-  var viewModel = TrackListViewModel()
+  // Initializer
   let refreshControl = UIRefreshControl()
+  var viewModel = TrackListViewModel()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -26,6 +28,7 @@ class TrackListController: UIViewController {
   // Retrieve Tracks from DB
   
   override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     viewModel.getTracks(collectionView: self.collectionView) { isEmpty in
       if isEmpty {
         self.noTracksFoundL.isHidden = false
@@ -62,6 +65,7 @@ class TrackListController: UIViewController {
   // Fetch Tracks Data when pulling to refresh
   
   @objc private func fetchData(_ sender: Any) {
+    networkAvailability() // Check internet connection
     viewModel.getTracks(collectionView: self.collectionView) { isEmpty in
       if isEmpty {
         self.noTracksFoundL.isHidden = false

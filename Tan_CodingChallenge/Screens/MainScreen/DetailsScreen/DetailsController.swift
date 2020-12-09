@@ -33,6 +33,10 @@ class DetailsController: UIViewController {
     initViews()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+  }
+  
   // MARK: - Initialize Views
   
   private func initViews() {
@@ -61,6 +65,8 @@ class DetailsController: UIViewController {
   // MARK: - Preview Button Clicked
   
   @IBAction func previewClicked(_ sender: Any) {
+    
+    networkAvailability() // Check internet connection
     guard let previewUrl = self.previewUrl else { return }
     let url = URL(string: previewUrl)
     
