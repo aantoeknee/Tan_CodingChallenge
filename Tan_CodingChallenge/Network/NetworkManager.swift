@@ -34,7 +34,6 @@ class NetworkManager: NSObject {
     }
     @objc func networkStatusChanged(_ notification: Notification) {
         // Do something globally here!
-      print("Unable to start notifier")
     }
     static func stopNotifier() -> Void {
         do {
