@@ -12,6 +12,7 @@ class TrackListController: UIViewController {
   // MARK: - IBOutlets
   
   @IBOutlet weak var collectionView: UICollectionView!
+  @IBOutlet weak var noTracksFoundL: UILabel!
   
   var viewModel = TrackListViewModel()
   let refreshControl = UIRefreshControl()
@@ -25,7 +26,12 @@ class TrackListController: UIViewController {
   // Retrieve Tracks from DB
   
   override func viewWillAppear(_ animated: Bool) {
-    viewModel.getTracks(collectionView: self.collectionView) {
+    viewModel.getTracks(collectionView: self.collectionView) { isEmpty in
+      if isEmpty {
+        self.noTracksFoundL.isHidden = false
+      } else {
+        self.noTracksFoundL.isHidden = true
+      }
       self.refreshControl.endRefreshing()
     }
   }
@@ -56,7 +62,12 @@ class TrackListController: UIViewController {
   // Fetch Tracks Data when pulling to refresh
   
   @objc private func fetchData(_ sender: Any) {
-    viewModel.getTracks(collectionView: self.collectionView) {
+    viewModel.getTracks(collectionView: self.collectionView) { isEmpty in
+      if isEmpty {
+        self.noTracksFoundL.isHidden = false
+      } else {
+        self.noTracksFoundL.isHidden = true
+      }
       self.refreshControl.endRefreshing()
     }
   }
