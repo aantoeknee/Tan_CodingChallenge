@@ -23,8 +23,6 @@ class SearchTrackViewModel {
   }
 }
 
-
-
 extension SearchTrackViewModel {
   
   // MARK: Filter function for search

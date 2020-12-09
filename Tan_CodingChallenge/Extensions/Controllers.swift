@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Reachability
 import SystemConfiguration
 import TTGSnackbar
 import UIKit
@@ -21,13 +20,13 @@ extension UIViewController {
     snackBar.show()
   }
   
-  func showSnackBarWithAction(message: String) {
+  func showSnackBarWithAction(message: String, action: String) {
     let snackbar = TTGSnackbar(
-        message: message,
-        duration: .long,
-        actionText: "Okay",
+        message: "message",
+        duration: .forever,
+        actionText: action,
         actionBlock: { (snackbar) in
-          snackbar.isHidden = true
+            print("Click action!")
         }
     )
     snackbar.show()

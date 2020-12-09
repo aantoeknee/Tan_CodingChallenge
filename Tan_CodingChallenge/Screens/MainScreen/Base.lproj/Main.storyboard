@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="as0-oe-lxo">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bouncesZoom="NO" dataMode="prototypes" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="as0-oe-lxo">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="P4U-WN-rf3">
@@ -31,18 +31,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No tracks found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzY-Hw-ChR">
-                                <rect key="frame" x="126.5" y="323" width="122" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="EzY-Hw-ChR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="1Db-U3-2LZ"/>
-                            <constraint firstItem="EzY-Hw-ChR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Bx2-L3-zOI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="as0-oe-lxo" secondAttribute="trailing" id="cEe-q0-9sz"/>
                             <constraint firstItem="as0-oe-lxo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jTw-M8-Mi8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="as0-oe-lxo" secondAttribute="bottom" id="o1I-dD-S6K"/>
@@ -59,7 +51,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="as0-oe-lxo" id="eGS-EW-jsT"/>
-                        <outlet property="noTracksFoundL" destination="EzY-Hw-ChR" id="qFl-DY-lP5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -84,10 +75,10 @@
             </objects>
             <point key="canvasLocation" x="-39.130434782608695" y="-23.4375"/>
         </scene>
-        <!--Details Controller-->
+        <!--Details-->
         <scene sceneID="cSX-aG-jDx">
             <objects>
-                <viewController storyboardIdentifier="DetailsController" id="7ng-ie-AnR" customClass="DetailsController" customModule="Tan_CodingChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsController" title="Details" id="7ng-ie-AnR" customClass="DetailsController" customModule="Tan_CodingChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7nP-5S-dBW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

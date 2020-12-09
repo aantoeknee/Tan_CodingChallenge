@@ -13,7 +13,6 @@ class TrackListController: UIViewController {
   // MARK: - IBOutlets
   
   @IBOutlet weak var collectionView: UICollectionView!
-  @IBOutlet weak var noTracksFoundL: UILabel!
   
   // Initializer
   let refreshControl = UIRefreshControl()
@@ -29,12 +28,8 @@ class TrackListController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    viewModel.getTracks(collectionView: self.collectionView) { isEmpty in
-      if isEmpty {
-        self.noTracksFoundL.isHidden = false
-      } else {
-        self.noTracksFoundL.isHidden = true
-      }
+
+    viewModel.getTracks(collectionView: self.collectionView) { [self] isEmpty in
       self.refreshControl.endRefreshing()
     }
   }
@@ -54,7 +49,6 @@ class TrackListController: UIViewController {
     collectionView.refreshControl = refreshControl
     collectionView.dataSource = self
     collectionView.delegate = self
-    
     return collectionView
   }
   
@@ -67,11 +61,6 @@ class TrackListController: UIViewController {
   @objc private func fetchData(_ sender: Any) {
     networkAvailability() // Check internet connection
     viewModel.getTracks(collectionView: self.collectionView) { isEmpty in
-      if isEmpty {
-        self.noTracksFoundL.isHidden = false
-      } else {
-        self.noTracksFoundL.isHidden = true
-      }
       self.refreshControl.endRefreshing()
     }
   }
@@ -147,4 +136,3 @@ extension TrackListController: UICollectionViewDelegateFlowLayout {
     return CGSize(width: collectionView.frame.width, height: 45.0)
   }
 }
-

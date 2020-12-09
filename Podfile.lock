@@ -6,7 +6,6 @@ PODS:
   - R.swift (5.3.0):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
-  - ReachabilitySwift (5.0.0)
   - Realm (10.2.0):
     - Realm/Headers (= 10.2.0)
   - Realm/Headers (10.2.0)
@@ -24,7 +23,6 @@ DEPENDENCIES:
   - Alamofire (~> 5.2)
   - Kingfisher (~> 5.8.3)
   - R.swift
-  - ReachabilitySwift
   - RealmSwift (~> 10.2.0)
   - RxCocoa (= 6.0.0-rc.2)
   - RxSwift (= 6.0.0-rc.2)
@@ -36,7 +34,6 @@ SPEC REPOS:
     - Kingfisher
     - R.swift
     - R.swift.Library
-    - ReachabilitySwift
     - Realm
     - RealmSwift
     - RxCocoa
@@ -49,7 +46,6 @@ SPEC CHECKSUMS:
   Kingfisher: b7e4cb65ff24c264bd2a1284b75b974d907afd94
   R.swift: 4170fb7161c67be3bc1a847040b79367d69c419f
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
-  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Realm: d7914ebf66bb182469726f997c4c38eff286aab0
   RealmSwift: aad08b7dc8c732b7b5794286e9df83739bf834f1
   RxCocoa: 38445a25751be5907f52f7ea02c137f52ce2e7f2
@@ -57,6 +53,6 @@ SPEC CHECKSUMS:
   RxSwift: ada35be6643bedf6881cdbd6bbfb27aeea527670
   TTGSnackbar: 97c033600de8a9c8f4a093f25a08543a03946bcc
 
-PODFILE CHECKSUM: 7366ee641024ec42e4336e1a77d1355f7ac44ee1
+PODFILE CHECKSUM: 9a407a45eefcfc208e6ccfaa97716923c9ac6ac4
 
 COCOAPODS: 1.10.0
