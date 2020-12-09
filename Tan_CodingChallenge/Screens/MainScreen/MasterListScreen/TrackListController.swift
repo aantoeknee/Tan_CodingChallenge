@@ -20,16 +20,22 @@ class TrackListController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.collectionView = setupCollectionView(collectionView: self.collectionView)
+    networkAvailability()
     initRefreshControler()
+    self.collectionView = setupCollectionView(collectionView: self.collectionView)
   }
   
   // Retrieve Tracks from DB
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-
+    
     viewModel.getTracks(collectionView: self.collectionView) { [self] isEmpty in
+      if isEmpty {
+//        showSnackBar(message: "Please try refreshing the table")
+      } else {
+        
+      }
       self.refreshControl.endRefreshing()
     }
   }

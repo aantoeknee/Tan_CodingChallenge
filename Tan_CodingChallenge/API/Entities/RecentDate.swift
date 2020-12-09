@@ -22,18 +22,20 @@ extension RecentDate {
   // Save current date and time
   
   public func saveDate() {
-    let date = Date().toString(format: "MMM d, h:mm a")
-    let dateObject = RecentDate()
-    dateObject.date = date
-    
-    deleteDate()
-    do {
-      let realm = try Realm()
-        try realm.write {
-            realm.add(dateObject)
-        }
-    } catch {
-      print(error)
+    if Reachability.isConnectedToNetwork() {
+      let date = Date().toString(format: "MMM d, h:mm a")
+      let dateObject = RecentDate()
+      dateObject.date = date
+      
+      deleteDate()
+      do {
+        let realm = try Realm()
+          try realm.write {
+              realm.add(dateObject)
+          }
+      } catch {
+        print(error)
+      }
     }
   }
   

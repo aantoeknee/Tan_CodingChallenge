@@ -19,18 +19,6 @@ extension UIViewController {
     snackBar.backgroundColor = .black
     snackBar.show()
   }
-  
-  func showSnackBarWithAction(message: String, action: String) {
-    let snackbar = TTGSnackbar(
-        message: "message",
-        duration: .forever,
-        actionText: action,
-        actionBlock: { (snackbar) in
-            print("Click action!")
-        }
-    )
-    snackbar.show()
-  }
 }
 
 // MARK: - Check Network Availability
@@ -39,7 +27,7 @@ extension UIViewController {
   
   func networkAvailability() {
     if !Reachability.isConnectedToNetwork() {
-      self.showSnackBar(message: "No internet connection")
+      self.showSnackBar(message: "No Internet connection.")
     }
   }
 }
