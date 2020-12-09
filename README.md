@@ -31,8 +31,3 @@ In downloading and saving images, I used the Kingfisher swift library. This libr
 
 In saving the Date and Time, my original plan was to use the UserDefaults object but I observered that the data saved inside the UserDefault are still persisted even if the app is uninstalled. So I used RealmSwift instead.
 
-# Programming Paradigm
-
-The OOP or Object-Oriented Programming is the programming paradigm that was used. I used because it is commonly used in modern programming. Looking at the software designs like an object that you could modify, create functions to, reuse and etc. I also selected this because it fits the MVVM architecture which separates the object from the others
-
-
