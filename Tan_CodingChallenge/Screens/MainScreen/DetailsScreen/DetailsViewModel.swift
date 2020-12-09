@@ -37,7 +37,7 @@ public class DetailsViewModel {
   }
   
   var price: String {
-    return "$ \(track?.price ?? 0.0)"
+    return "$\(track?.price ?? 0.0)"
   }
   
   var previewUrl: String {

@@ -29,7 +29,7 @@ public class TrackCellViewModel {
   }
   
   var price: String {
-    return "$ \(track?.price ?? 0.0)"
+    return "$\(track?.price ?? 0.0)"
   }
   
   // MARK: - Initializer
