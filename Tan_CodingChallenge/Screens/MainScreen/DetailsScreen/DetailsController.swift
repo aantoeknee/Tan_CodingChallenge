@@ -9,6 +9,20 @@ import AVKit
 import Kingfisher
 import UIKit
 
+// MARK:- Enums for WrapperType
+enum WrapperType: String {
+  
+  case track = "track"
+  case audioBook = "audioBook"
+}
+// MARK:- Enums for TrackKind
+enum TrackKind: String {
+  
+  case song = "song"
+  case movie = "feature-movie"
+  case series = "tv-episode"
+}
+
 class DetailsController: UIViewController {
   
   // MARK: - IBOutlets
@@ -21,7 +35,8 @@ class DetailsController: UIViewController {
   @IBOutlet weak var trackPrice: UILabel!
   @IBOutlet weak var trackDescription: UILabel!
   @IBOutlet weak var noPreviewL: UILabel!
-
+  @IBOutlet weak var wrapKindL: UILabel!
+  
   
   // MARK: - Properties
   
@@ -60,8 +75,35 @@ class DetailsController: UIViewController {
       noPreviewL.isHidden = true
       self.previewUrl = previewUrl
     }
+    
+    // Determine WrapType
+    guard let wrapper = viewModel?.wrapperType else { return }
+    guard let wrapperType = WrapperType(rawValue: wrapper) else { return }
+    
+    switch wrapperType {
+    case .track:
+      guard let kind = viewModel?.kind else { return }
+      guard let trackKind = TrackKind(rawValue: kind) else { return }
+      let wrapType = WrapperType.track.rawValue
+      
+      // Determine what kind of Track
+      switch trackKind {
+      case .song:
+        let trackKind = TrackKind.song.rawValue
+        self.wrapKindL.text = "\(wrapType)(\(trackKind))"
+      case .movie:
+        let trackKind = TrackKind.movie.rawValue
+        self.wrapKindL.text = "\(wrapType)(\(trackKind))"
+      case .series:
+        let trackKind = TrackKind.series.rawValue
+        self.wrapKindL.text = "\(wrapType)(\(trackKind))"
+        break
+      }
+      
+    case .audioBook:
+      self.wrapKindL.text = WrapperType.audioBook.rawValue
+    }
   }
-  
   // MARK: - Preview Button Clicked
   
   @IBAction func previewClicked(_ sender: Any) {
@@ -78,5 +120,7 @@ class DetailsController: UIViewController {
     
     // Start playing the video/audio
     player.play()
+    
   }
 }
+  

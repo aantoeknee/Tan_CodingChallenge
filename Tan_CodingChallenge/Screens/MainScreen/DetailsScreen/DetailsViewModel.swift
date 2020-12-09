@@ -23,9 +23,7 @@ public class DetailsViewModel {
   
   var name: String? {
     // If trackName is empty, returns collectionName
-    return track?.name == nil ?
-      track?.collectionName :
-      track?.name
+    return "Test "
   }
   
   var artWorkUrl: String {
@@ -37,7 +35,7 @@ public class DetailsViewModel {
   }
   
   var price: String {
-    return "$ \(track?.price ?? 0.0)"
+    return "$\(track?.price ?? 0.0)"
   }
   
   var previewUrl: String {
