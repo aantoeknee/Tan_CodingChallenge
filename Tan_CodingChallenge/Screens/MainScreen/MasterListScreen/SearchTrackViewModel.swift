@@ -26,14 +26,19 @@ class SearchTrackViewModel {
 extension SearchTrackViewModel {
   
   // MARK: Filter function for search
-  
+
   func filterTracks(query: String) {
-    let newArray = tracks.filter {
-      $0.name?.lowercased().contains(query.lowercased()) ?? false
-        || $0.genre.lowercased().contains(query.lowercased())
-        || String($0.price).contains(query.lowercased())
+    
+    if query == "" {
+      filteredTracks = tracks
+    } else {
+      let newArray = tracks.filter {
+        $0.name?.lowercased().contains(query.lowercased()) ?? false
+          || $0.genre.lowercased().contains(query.lowercased())
+          || String($0.price).contains(query.lowercased())
+      }
+      filteredTracks = newArray
     }
-    filteredTracks = newArray
   }
   
   // MARK: Create Instance of TrackCellViewModel
