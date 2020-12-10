@@ -35,7 +35,9 @@ class SearchTrackController: UIViewController {
       .throttle(.milliseconds(400), scheduler: MainScheduler.instance)
       .subscribe(onNext: { [unowned self] searchInput in
         self.viewModel?.filterTracks(query: searchInput)
-        collectionView.reloadData()
+        DispatchQueue.main.async {
+          collectionView.reloadData()
+        }
     }).disposed(by: disposeBag)
   }
   

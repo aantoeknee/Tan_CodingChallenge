@@ -39,6 +39,7 @@ class TrackCell: UICollectionViewCell {
     guard let imageUrl = self.cellViewModel?.artworkUrl else { return }
     let urlRequest = URL(string: imageUrl)
     self.artwork.kf.indicatorType = .activity
-    self.artwork.kf.setImage(with: urlRequest)
+    self.artwork.kf.setImage(with: urlRequest,
+                             placeholder: R.image.placeholder())
   }
 }

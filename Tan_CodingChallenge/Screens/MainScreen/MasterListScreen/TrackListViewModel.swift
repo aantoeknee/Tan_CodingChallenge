@@ -31,17 +31,22 @@ class TrackListViewModel {
   
   // Retrieves Tracks and reload collection view.
   func getTracks(collectionView: UICollectionView,
-                 completion: @escaping (_ isEmpty: Bool) -> ()) {
+                 controller: UIViewController,
+                 completion: @escaping (_ errorString: String?) -> ()) {
     
-    trackService.getTracks() { tracks in
+    trackService.getTracks(controller) { tracks, error in
       if tracks.isEmpty {
         self.tracks = self.dummyTracks //Dummy data to show TableCells
-        collectionView.reloadData()
-        completion(true)
+        DispatchQueue.main.async {
+          collectionView.reloadData()
+        }
+        completion(error?.localizedDescription)
       } else {
         self.tracks = tracks
-        collectionView.reloadData()
-        completion(false)
+        DispatchQueue.main.async {
+          collectionView.reloadData()
+        }
+        completion(nil)
       }
     }
   }

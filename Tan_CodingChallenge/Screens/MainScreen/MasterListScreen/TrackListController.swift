@@ -21,22 +21,27 @@ class TrackListController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    networkAvailability()
+    initContent()
     initRefreshControler()
-    self.collectionView = setupCollectionView(collectionView: self.collectionView)
   }
-  
-  // Retrieve Tracks from DB
-  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+  }
+  
+  private func initContent() {
+    self.collectionView = setupCollectionView(collectionView: self.collectionView)
     
     activityIndicator.startAnimating()
     collectionView.isScrollEnabled = false
     
-    viewModel.getTracks(collectionView: self.collectionView) { [self] isEmpty in
-      collectionView.isScrollEnabled = true
-      activityIndicator.stopAnimating()
+    viewModel.getTracks(collectionView: self.collectionView,
+                        controller:  self) { errorString in
+      
+      if !(errorString?.isEmpty ?? true) {
+        self.showSnackBar(message: errorString ?? "")
+      }
+      self.collectionView.isScrollEnabled = true
+      self.activityIndicator.stopAnimating()
       self.refreshControl.endRefreshing()
     }
   }
@@ -66,8 +71,12 @@ class TrackListController: UIViewController {
   // Fetch Tracks Data when pulling to refresh
   
   @objc private func fetchData(_ sender: Any) {
-    networkAvailability() // Check internet connection
-    viewModel.getTracks(collectionView: self.collectionView) { isEmpty in
+    viewModel.getTracks(collectionView: self.collectionView,
+                        controller: self) { errorString in
+      
+      if !(errorString?.isEmpty ?? true) {
+        self.showSnackBar(message: errorString ?? "")
+      }
       self.refreshControl.endRefreshing()
     }
   }
