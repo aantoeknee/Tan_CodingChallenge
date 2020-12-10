@@ -15,7 +15,7 @@ I used this architecture because aside from it is what I'm used to, this archite
 
 - Model = handles all data objects
 - View = handles all UI or what the user's see and interacts with
-- ViewModel = notifies the View if there's any changes in Model
+- ViewModel = notifies the View if there's any changes in the Model
 - Coordinator = handles the navigation between views/screens
 
 # Persistence
