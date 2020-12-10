@@ -110,9 +110,8 @@ class DetailsController: UIViewController {
     
     networkAvailability() // Check internet connection
     guard let previewUrl = self.previewUrl else { return }
-    let url = URL(string: previewUrl)
-    
-    let player = AVPlayer(url: url!)
+    guard let url = URL(string: previewUrl) else { return }
+    let player = AVPlayer(url: url)
     let playerController = AVPlayerViewController()
     playerController.player = player
     

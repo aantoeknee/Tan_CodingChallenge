@@ -15,43 +15,38 @@ public class TrackService {
   
   // MARK: - GET Data from API
   
-  func getTracks(completion: @escaping (_ tracks: [Track]) -> ()) {
-    AF.request(url, method: .get, requestModifier: { $0.timeoutInterval = 10 }).responseJSON { response in
+  func getTracks(_ controller: UIViewController, completion: @escaping (_ tracks: [Track], _ error: NSError?) -> ()) {
+
+    if Reachability.isConnectedToNetwork() {
+      AF.request(url, method: .get, requestModifier: { $0.timeoutInterval = 30 }).responseJSON { response in
+        switch response.result {
+        case .success:
+          let decoder = JSONDecoder()
+          do {
+            let model = try decoder.decode(TrackResponse.self, from: response.data!)
+            let tracks = model.results
+            
+            self.track.deleteAll()// Delete previous data to avoid duplication
+            self.track.saveAll(tracks: tracks)// Save newly retrieved data
+            completion(self.track.queryAll(), nil)// Return all queried data
+          }
+          catch {
+            // Return all queried data
+            let nserror = error as NSError
+            completion(self.track.queryAll(), nserror)
       
-      switch response.result {
-      case .success:
-        let decoder = JSONDecoder()
-        
-        do {
-          let model = try decoder.decode(TrackResponse.self, from: response.data!)
-          let tracks = model.results
-          
-          // Delete previous data to avoid duplication
-          
-          self.track.deleteAll()
-          
-          // Save newly retrieved data
-          
-          self.track.saveAll(tracks: tracks)
-          
-          // Return all queried data
-          
-          completion(self.track.queryAll())
-        }
-        catch {
-          print("Error: \(error)")
-          
-          // Return all quiried data
-          
-          completion(self.track.queryAll())
+          }
+        case .failure(let err):
+          // If unable to retrieve data, fetch data from database
+          let nserror = err as NSError
+          completion(self.track.queryAll(), nserror)
     
         }
-      case .failure:
-        // If unable to retrieve data
-        print("Failed retrieving data")
-        completion(self.track.queryAll())
-  
       }
+    }
+    else {
+      controller.networkAvailability()
+      completion(self.track.queryAll(), nil)
     }
   }
 }
