@@ -23,6 +23,8 @@ I used this architecture because aside from it is what I'm used to, this archite
 The app saves all tracks that were retrieved when the app has started.
 It also saves the Date and Time of user's recent visit.
 
+When the app is launched again, it will use the data stored in database unless the user refresh the app and retrieve new data from the api.
+
 The persistence framework used in this app is RealmSwift.
 I used this framework because it is where I am comfortable with compared to CoreData.
 In my personal experience, RealmSwift was easier to learn and easier to implement because of their clear and straightforward documentations. I also used the MangoDB Realm Studio to track the app's database.
