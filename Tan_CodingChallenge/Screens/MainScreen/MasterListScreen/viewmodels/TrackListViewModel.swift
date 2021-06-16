@@ -18,6 +18,7 @@ class TrackListViewModel {
   var controller: UIViewController?
   
   var count: Int {
+    print(tracks.count)
     return tracks.count
   }
   

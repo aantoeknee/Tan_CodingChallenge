@@ -64,11 +64,40 @@ extension Track {
   // Save all tracks retrieved from the API consumption
   
   public func saveAll(tracks: [Track]) {
-    let realm = try! Realm()
-    for track in tracks {
-      track.id = track.IncrementaID()
-      try! realm.write {
-        realm.add(track, update: .all)
+    let currentTracks = queryAll()
+    
+    if currentTracks.isEmpty {
+      for track in tracks {
+        let realm = try! Realm()
+        track.id = track.IncrementaID()
+        try! realm.write {
+          realm.add(track, update: .all)
+        }
+      }
+    }
+    else {
+      var newTracks: [Track] = []
+      var counter = 0
+      for track in tracks {
+        for currentTrack in currentTracks {
+          if currentTrack.collectionName == track.collectionName {
+            counter += 1
+          }
+          if counter == 0 {
+            newTracks.append(track)
+          }
+        }
+      }
+      for track in newTracks {
+        let realm = try! Realm()
+        track.id = track.IncrementaID()
+        do {
+          try realm.write {
+            realm.add(track)
+          }
+        } catch {
+          print(error)
+        }
       }
     }
   }
@@ -110,7 +139,7 @@ extension Track {
     do {
       let realm = try Realm()
       try realm.write {
-        track.isFavorite = track.isFavorite ?? false ? false : true
+        track.isFavorite = track.isFavorite ? false : true
       }
     } catch {
       print(error)
