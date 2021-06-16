@@ -35,9 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func setupRealmSchema() {
     let config = Realm.Configuration(
-      schemaVersion: 10,
+      schemaVersion: 13,
       migrationBlock: { migration, oldSchemaVersion in
-        if (oldSchemaVersion < 10) {
+        if (oldSchemaVersion < 11) {
           var nextID = 0
           migration.enumerateObjects(ofType: Track.className()) { oldObject, newObject in
             newObject!["id"] = nextID

@@ -25,7 +25,7 @@ class Track: Object, Decodable {
   @objc dynamic var longDesc: String? = nil
   @objc dynamic var desc: String? = nil
   @objc dynamic var previewUrl: String? = nil
-  @objc dynamic var isFavorite: Bool = true
+  @objc dynamic var isFavorite: Bool = false
   
   override static func primaryKey() -> String? {
     return "id"
@@ -45,7 +45,6 @@ class Track: Object, Decodable {
     case longDesc = "longDescription"
     case desc = "description"
     case previewUrl
-    case isFavorite
   }
 }
 
@@ -53,13 +52,23 @@ class Track: Object, Decodable {
 
 extension Track {
   
+  func IncrementaID() -> Int{
+      let realm = try! Realm()
+      if let retNext = realm.objects(Track.self).sorted(byKeyPath: "id").last?.id {
+          return retNext + 1
+      }else{
+          return 1
+      }
+  }
+  
   // Save all tracks retrieved from the API consumption
   
   public func saveAll(tracks: [Track]) {
     let realm = try! Realm()
     for track in tracks {
+      track.id = track.IncrementaID()
       try! realm.write {
-          realm.add(track)
+        realm.add(track, update: .all)
       }
     }
   }
@@ -101,7 +110,7 @@ extension Track {
     do {
       let realm = try Realm()
       try realm.write {
-        track.isFavorite = track.isFavorite ? false : true
+        track.isFavorite = track.isFavorite ?? false ? false : true
       }
     } catch {
       print(error)
