@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0090C5725CD032F6991B3F1D /* Pods_Tan_CodingChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5740B0EAC1F21814B34FDF3F /* Pods_Tan_CodingChallenge.framework */; };
+		AB26D9CE2679E09B000DBB2E /* FavoriteScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26D9CD2679E09B000DBB2E /* FavoriteScreenController.swift */; };
 		AFEF177ABC831E2B3422A924 /* Pods_Tan_CodingChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C87EBFA55BBF69804051514 /* Pods_Tan_CodingChallengeTests.framework */; };
 		D417F62373EE42BA506BA435 /* Pods_Tan_CodingChallenge_Tan_CodingChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CD660D7A684D45063F31B5 /* Pods_Tan_CodingChallenge_Tan_CodingChallengeUITests.framework */; };
 		E4A2AC96257F84B800BC2EC3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A2AC95257F84B800BC2EC3 /* HeaderView.swift */; };
@@ -66,6 +67,7 @@
 		81CD660D7A684D45063F31B5 /* Pods_Tan_CodingChallenge_Tan_CodingChallengeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tan_CodingChallenge_Tan_CodingChallengeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82B9D4C585889E73566782A7 /* Pods-Tan_CodingChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tan_CodingChallenge.release.xcconfig"; path = "Target Support Files/Pods-Tan_CodingChallenge/Pods-Tan_CodingChallenge.release.xcconfig"; sourceTree = "<group>"; };
 		9C87EBFA55BBF69804051514 /* Pods_Tan_CodingChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tan_CodingChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB26D9CD2679E09B000DBB2E /* FavoriteScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteScreenController.swift; sourceTree = "<group>"; };
 		B75506969DF5ACD8B65BABD7 /* Pods-Tan_CodingChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tan_CodingChallengeTests.debug.xcconfig"; path = "Target Support Files/Pods-Tan_CodingChallengeTests/Pods-Tan_CodingChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E4A2AC95257F84B800BC2EC3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		E4A2AC9A257F84C300BC2EC3 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
@@ -144,6 +146,60 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		AB26D9CC2679E072000DBB2E /* FavoriteScreen */ = {
+			isa = PBXGroup;
+			children = (
+				AB26D9CD2679E09B000DBB2E /* FavoriteScreenController.swift */,
+			);
+			path = FavoriteScreen;
+			sourceTree = "<group>";
+		};
+		AB26D9CF2679E762000DBB2E /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E4B6736B257E46D90048E78F /* TrackListController.swift */,
+				E4E76A0B257FD826002D8C21 /* SearchTrackController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		AB26D9D02679E76C000DBB2E /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				E4B67370257E4DAB0048E78F /* TrackCell.swift */,
+				E4B67371257E4DAB0048E78F /* TrackCell.xib */,
+				E4A2AC95257F84B800BC2EC3 /* HeaderView.swift */,
+				E4A2AC9A257F84C300BC2EC3 /* HeaderView.xib */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
+		AB26D9D12679E774000DBB2E /* viewmodels */ = {
+			isa = PBXGroup;
+			children = (
+				E4E76A1C257FDAF1002D8C21 /* SearchTrackViewModel.swift */,
+				E4B67424257E76970048E78F /* TrackListViewModel.swift */,
+				E4B67429257E76A20048E78F /* TrackCellViewModel.swift */,
+			);
+			path = viewmodels;
+			sourceTree = "<group>";
+		};
+		AB26D9D22679E7B5000DBB2E /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E4B674B0257E955B0048E78F /* DetailsController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		AB26D9D32679E7BB000DBB2E /* viewmodels */ = {
+			isa = PBXGroup;
+			children = (
+				E4B674ED257EA1180048E78F /* DetailsViewModel.swift */,
+			);
+			path = viewmodels;
+			sourceTree = "<group>";
+		};
 		E4B67313257E29C80048E78F = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +276,7 @@
 		E4B6735D257E46400048E78F /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
+				AB26D9CC2679E072000DBB2E /* FavoriteScreen */,
 				E4B6735F257E466B0048E78F /* DetailsScreen */,
 				E4B6735E257E46530048E78F /* MasterListScreen */,
 				E4B67325257E29C80048E78F /* Main.storyboard */,
@@ -230,16 +287,10 @@
 		E4B6735E257E46530048E78F /* MasterListScreen */ = {
 			isa = PBXGroup;
 			children = (
-				E4B6736B257E46D90048E78F /* TrackListController.swift */,
-				E4B67370257E4DAB0048E78F /* TrackCell.swift */,
-				E4B67371257E4DAB0048E78F /* TrackCell.xib */,
-				E4B67424257E76970048E78F /* TrackListViewModel.swift */,
-				E4B67429257E76A20048E78F /* TrackCellViewModel.swift */,
-				E4A2AC95257F84B800BC2EC3 /* HeaderView.swift */,
-				E4A2AC9A257F84C300BC2EC3 /* HeaderView.xib */,
+				AB26D9D12679E774000DBB2E /* viewmodels */,
+				AB26D9D02679E76C000DBB2E /* cells */,
+				AB26D9CF2679E762000DBB2E /* controllers */,
 				E4A2ACA9257FA19200BC2EC3 /* TrackListCoordinator.swift */,
-				E4E76A0B257FD826002D8C21 /* SearchTrackController.swift */,
-				E4E76A1C257FDAF1002D8C21 /* SearchTrackViewModel.swift */,
 			);
 			path = MasterListScreen;
 			sourceTree = "<group>";
@@ -247,8 +298,8 @@
 		E4B6735F257E466B0048E78F /* DetailsScreen */ = {
 			isa = PBXGroup;
 			children = (
-				E4B674B0257E955B0048E78F /* DetailsController.swift */,
-				E4B674ED257EA1180048E78F /* DetailsViewModel.swift */,
+				AB26D9D32679E7BB000DBB2E /* viewmodels */,
+				AB26D9D22679E7B5000DBB2E /* controllers */,
 			);
 			path = DetailsScreen;
 			sourceTree = "<group>";
@@ -596,6 +647,7 @@
 				E4E76A0C257FD826002D8C21 /* SearchTrackController.swift in Sources */,
 				E4B67322257E29C80048E78F /* SceneDelegate.swift in Sources */,
 				E4E76D002580E73E002D8C21 /* String.swift in Sources */,
+				AB26D9CE2679E09B000DBB2E /* FavoriteScreenController.swift in Sources */,
 				E4E76BD82580899B002D8C21 /* Reachability.swift in Sources */,
 				E4A2AC96257F84B800BC2EC3 /* HeaderView.swift in Sources */,
 			);
@@ -777,7 +829,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4MS8AV9YR3;
 				INFOPLIST_FILE = Tan_CodingChallenge/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -798,7 +850,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4MS8AV9YR3;
 				INFOPLIST_FILE = Tan_CodingChallenge/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

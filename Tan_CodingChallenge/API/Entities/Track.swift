@@ -13,6 +13,7 @@ class Track: Object, Decodable {
   
   // MARK: - Properties
   
+  @objc dynamic var id = 0
   @objc dynamic var wrapperType = ""
   @objc dynamic var kind: String? = nil
   @objc dynamic var name: String? = nil
@@ -24,11 +25,15 @@ class Track: Object, Decodable {
   @objc dynamic var longDesc: String? = nil
   @objc dynamic var desc: String? = nil
   @objc dynamic var previewUrl: String? = nil
+  @objc dynamic var isFavorite: Bool = true
+  
+  override static func primaryKey() -> String? {
+    return "id"
+  }
   
   // MARK: - Coding Keys
   
   private enum CodingKeys: String, CodingKey {
-    
     case wrapperType
     case kind
     case name = "trackName"
@@ -40,6 +45,7 @@ class Track: Object, Decodable {
     case longDesc = "longDescription"
     case desc = "description"
     case previewUrl
+    case isFavorite
   }
 }
 
@@ -64,6 +70,42 @@ extension Track {
     let realm = try! Realm()
     let tracks = Array(realm.objects(Track.self))
     return tracks
+  }
+  
+  // Query All favorite tracks
+  
+  public func queryAllFavorites() -> [Track] {
+    do {
+      let realm = try Realm()
+      let tracks = Array(realm.objects(Track.self).filter("isFavorite = true"))
+      return tracks
+    } catch {
+      print(error)
+      return []
+    }
+  }
+  
+  public func getTrack(id: Int) -> Track? {
+    do {
+      let realm = try Realm()
+      let track = realm.object(ofType: Track.self, forPrimaryKey: id)
+      return track
+    } catch {
+      print(error)
+      return nil
+    }
+  }
+  // Update a track
+  
+  public func updateTrack(_ track: Track) {
+    do {
+      let realm = try Realm()
+      try realm.write {
+        track.isFavorite = track.isFavorite ? false : true
+      }
+    } catch {
+      print(error)
+    }
   }
   
   // Delete all Tracks

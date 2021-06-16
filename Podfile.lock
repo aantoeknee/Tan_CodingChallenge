@@ -1,29 +1,29 @@
 PODS:
-  - Alamofire (5.4.0)
+  - Alamofire (5.4.3)
   - Kingfisher (5.8.3):
     - Kingfisher/Core (= 5.8.3)
   - Kingfisher/Core (5.8.3)
-  - R.swift (5.3.0):
+  - R.swift (5.4.0):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
-  - Realm (10.2.0):
-    - Realm/Headers (= 10.2.0)
-  - Realm/Headers (10.2.0)
-  - RealmSwift (10.2.0):
-    - Realm (= 10.2.0)
+  - Realm (10.8.0):
+    - Realm/Headers (= 10.8.0)
+  - Realm/Headers (10.8.0)
+  - RealmSwift (10.8.0):
+    - Realm (= 10.8.0)
   - RxCocoa (6.0.0-rc.2):
     - RxRelay (= 6.0.0-rc.2)
     - RxSwift (= 6.0.0-rc.2)
   - RxRelay (6.0.0-rc.2):
     - RxSwift (= 6.0.0-rc.2)
   - RxSwift (6.0.0-rc.2)
-  - TTGSnackbar (1.10.3)
+  - TTGSnackbar (1.10.5)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - Kingfisher (~> 5.8.3)
   - R.swift
-  - RealmSwift (~> 10.2.0)
+  - RealmSwift
   - RxCocoa (= 6.0.0-rc.2)
   - RxSwift (= 6.0.0-rc.2)
   - TTGSnackbar
@@ -42,17 +42,17 @@ SPEC REPOS:
     - TTGSnackbar
 
 SPEC CHECKSUMS:
-  Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   Kingfisher: b7e4cb65ff24c264bd2a1284b75b974d907afd94
-  R.swift: 4170fb7161c67be3bc1a847040b79367d69c419f
+  R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
-  Realm: d7914ebf66bb182469726f997c4c38eff286aab0
-  RealmSwift: aad08b7dc8c732b7b5794286e9df83739bf834f1
+  Realm: ad3c5cd762e5a5bc02080fc55aa04a0e43f98575
+  RealmSwift: 316e450478fb01e06ece4438dda42f407c5f51d2
   RxCocoa: 38445a25751be5907f52f7ea02c137f52ce2e7f2
   RxRelay: b9e2483e83f46e4e7bf1234c6fe418e5c2eaf825
   RxSwift: ada35be6643bedf6881cdbd6bbfb27aeea527670
-  TTGSnackbar: 97c033600de8a9c8f4a093f25a08543a03946bcc
+  TTGSnackbar: 2bd245d2bbf83639483410273fd936af0b7ba2a9
 
-PODFILE CHECKSUM: 9a407a45eefcfc208e6ccfaa97716923c9ac6ac4
+PODFILE CHECKSUM: 9440caed435ba2ff6c3cbc9034a02d8d4f2f2038
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1

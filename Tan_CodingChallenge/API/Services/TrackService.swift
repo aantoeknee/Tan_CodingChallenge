@@ -49,4 +49,21 @@ public class TrackService {
       completion(self.track.queryAll(), nil)
     }
   }
+  
+  func getFavoriteTracks(_ controller: UIViewController, completion: @escaping (_ tracks: [Track], _ error: NSError?) -> ()) {
+
+    if Reachability.isConnectedToNetwork() {
+      let tracks = track.queryAllFavorites()
+      
+      if tracks.isEmpty {
+        completion([], nil)
+      } else {
+        completion(tracks, nil)
+      }
+    }
+    else {
+      controller.networkAvailability()
+      completion(self.track.queryAllFavorites(), nil)
+    }
+  }
 }

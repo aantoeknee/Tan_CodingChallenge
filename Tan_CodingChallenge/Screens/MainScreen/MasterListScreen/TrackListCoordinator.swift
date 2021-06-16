@@ -30,4 +30,10 @@ class TrackListCoordinator {
     searchController.viewModel = viewModel
     navigationController?.pushViewController(searchController, animated: true)
   }
+  
+  //MARK: - Push Favorites Controller
+  func pushFavoritesController() {
+    let favoritesController = R.storyboard.main.favoriteScreenController()!
+    navigationController?.pushViewController(favoritesController, animated: true)
+  }
 }

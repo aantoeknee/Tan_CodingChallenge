@@ -5,6 +5,7 @@
 //  Created by Anthony Angelo Tan on 12/7/20.
 //
 
+import RealmSwift
 import UIKit
 
 @main
@@ -14,8 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
-    
-
+    setupRealmSchema()
     return true
   }
 
@@ -31,6 +31,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Called when the user discards a scene session.
     // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+  }
+  
+  func setupRealmSchema() {
+    let config = Realm.Configuration(
+      schemaVersion: 10,
+      migrationBlock: { migration, oldSchemaVersion in
+        if (oldSchemaVersion < 10) {
+          var nextID = 0
+          migration.enumerateObjects(ofType: Track.className()) { oldObject, newObject in
+            newObject!["id"] = nextID
+            nextID += 1
+          }
+        }
+      })
+
+    // Tell Realm to use this new configuration object for the default Realm
+    Realm.Configuration.defaultConfiguration = config
   }
 }
 

@@ -128,17 +128,34 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    #if os(watchOS)
+    /// `UIColor(named: "AccentColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func accentColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.accentColor.name)
+    }
+    #endif
+
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 3 images.
+  /// This `R.image` struct is generated, and contains static references to 4 images.
   struct image {
+    /// Image `heart-icon`.
+    static let heartIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "heart-icon")
     /// Image `placeholder`.
     static let placeholder = Rswift.ImageResource(bundle: R.hostingBundle, name: "placeholder")
     /// Image `play`.
     static let play = Rswift.ImageResource(bundle: R.hostingBundle, name: "play")
     /// Image `sampleimage`.
     static let sampleimage = Rswift.ImageResource(bundle: R.hostingBundle, name: "sampleimage")
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "heart-icon", bundle: ..., traitCollection: ...)`
+    static func heartIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.heartIcon, compatibleWith: traitCollection)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "placeholder", bundle: ..., traitCollection: ...)`
@@ -323,6 +340,7 @@ struct _R: Rswift.Validatable {
 
       let bundle = R.hostingBundle
       let detailsController = StoryboardViewControllerResource<DetailsController>(identifier: "DetailsController")
+      let favoriteScreenController = StoryboardViewControllerResource<FavoriteScreenController>(identifier: "FavoriteScreenController")
       let name = "Main"
       let searchTrackController = StoryboardViewControllerResource<SearchTrackController>(identifier: "SearchTrackController")
 
@@ -330,16 +348,22 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: detailsController)
       }
 
+      func favoriteScreenController(_: Void = ()) -> FavoriteScreenController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: favoriteScreenController)
+      }
+
       func searchTrackController(_: Void = ()) -> SearchTrackController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: searchTrackController)
       }
 
       static func validate() throws {
+        if UIKit.UIImage(named: "hear", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'hear' is used in storyboard 'Main', but couldn't be loaded.") }
         if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "magnifyingglass") == nil { throw Rswift.ValidationError(description: "[R.swift] System image named 'magnifyingglass' is used in storyboard 'Main', but couldn't be loaded.") } }
         if UIKit.UIImage(named: "play", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'play' is used in storyboard 'Main', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
         if _R.storyboard.main().detailsController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'detailsController' could not be loaded from storyboard 'Main' as 'DetailsController'.") }
+        if _R.storyboard.main().favoriteScreenController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'favoriteScreenController' could not be loaded from storyboard 'Main' as 'FavoriteScreenController'.") }
         if _R.storyboard.main().searchTrackController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'searchTrackController' could not be loaded from storyboard 'Main' as 'SearchTrackController'.") }
       }
 

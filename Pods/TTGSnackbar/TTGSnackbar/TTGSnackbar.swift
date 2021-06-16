@@ -112,6 +112,11 @@ open class TTGSnackbar: UIView {
     /// A property to enable left and right margin when using customContentView
     @objc open dynamic var shouldActivateLeftAndRightMarginOnCustomContentView: Bool = false
     
+    /// A property to allow for disabling the use of "Safe Area Layout Guides" on newer OS devices.
+    /// The purpose of this is to allow the a snackbar to extend under the "Swipe Up for Home" area
+    /// on iPhone X and newer devices.
+    @objc open dynamic var shouldHonorSafeAreaLayoutGuides: Bool = true
+    
     /// Action callback.
     @objc open dynamic var actionBlock: TTGActionBlock? = nil
     
@@ -583,56 +588,41 @@ public extension TTGSnackbar {
         addConstraints([contentViewTopConstraint!, contentViewBottomConstraint!, contentViewLeftConstraint!, contentViewRightConstraint!])
         
         // Get current window
-        let currentWindow: UIWindow? = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        var currentWindow: UIWindow? = UIApplication.shared.keyWindow
+        currentWindow = currentWindow ?? UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        currentWindow = currentWindow ?? UIApplication.shared.windows.first
         
         // Get super view to show
         if let superView = containerView ?? currentWindow {
             superView.addSubview(self)
             
+            var relativeToItem:Any = superView as Any;
+            if #available(iOS 11.0, *) {
+                if shouldHonorSafeAreaLayoutGuides {
+                    relativeToItem = superView.safeAreaLayoutGuide as Any
+                }
+            }
+            
             // Left margin constraint
-            if #available(iOS 11.0, *) {
-                leftMarginConstraint = NSLayoutConstraint.init(
-                    item: self, attribute: .leading, relatedBy: .equal,
-                    toItem: superView.safeAreaLayoutGuide, attribute: .leading, multiplier: 1, constant: leftMargin)
-            } else {
-                leftMarginConstraint = NSLayoutConstraint.init(
-                    item: self, attribute: .leading, relatedBy: .equal,
-                    toItem: superView, attribute: .leading, multiplier: 1, constant: leftMargin)
-            }
-            
+            leftMarginConstraint = NSLayoutConstraint.init(
+                item: self, attribute: .leading, relatedBy: .equal,
+                toItem: relativeToItem, attribute: .leading, multiplier: 1, constant: leftMargin)
+
             // Right margin constraint
-            if #available(iOS 11.0, *) {
-                rightMarginConstraint = NSLayoutConstraint.init(
-                    item: self, attribute: .trailing, relatedBy: .equal,
-                    toItem: superView.safeAreaLayoutGuide, attribute: .trailing, multiplier: 1, constant: -rightMargin)
-            } else {
-                rightMarginConstraint = NSLayoutConstraint.init(
-                    item: self, attribute: .trailing, relatedBy: .equal,
-                    toItem: superView, attribute: .trailing, multiplier: 1, constant: -rightMargin)
-            }
-            
+            rightMarginConstraint = NSLayoutConstraint.init(
+                item: self, attribute: .trailing, relatedBy: .equal,
+                toItem: relativeToItem, attribute: .trailing, multiplier: 1, constant: -rightMargin)
+
             // Bottom margin constraint
-            if #available(iOS 11.0, *) {
-                bottomMarginConstraint = NSLayoutConstraint.init(
-                    item: self, attribute: .bottom, relatedBy: .equal,
-                    toItem: superView.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: -bottomMargin)
-            } else {
-                bottomMarginConstraint = NSLayoutConstraint.init(
-                    item: self, attribute: .bottom, relatedBy: .equal,
-                    toItem: superView, attribute: .bottom, multiplier: 1, constant: -bottomMargin)
-            }
-            
+            bottomMarginConstraint = NSLayoutConstraint.init(
+                item: self, attribute: .bottom, relatedBy: .equal,
+                toItem: relativeToItem, attribute: .bottom, multiplier: 1, constant: -bottomMargin)
+
             // Top margin constraint
-            if #available(iOS 11.0, *) {
-                topMarginConstraint = NSLayoutConstraint.init(
-                    item: self, attribute: .top, relatedBy: .equal,
-                    toItem: superView.safeAreaLayoutGuide, attribute: .top, multiplier: 1, constant: topMargin)
-            } else {
-                topMarginConstraint = NSLayoutConstraint.init(
-                    item: self, attribute: .top, relatedBy: .equal,
-                    toItem: superView, attribute: .top, multiplier: 1, constant: topMargin)
-            }
-            
+            topMarginConstraint = NSLayoutConstraint.init(
+                item: self, attribute: .top, relatedBy: .equal,
+                toItem: relativeToItem, attribute: .top, multiplier: 1, constant: topMargin)
+
             // Center X constraint
             centerXConstraint = NSLayoutConstraint.init(
                 item: self, attribute: .centerX, relatedBy: .equal,
@@ -1139,18 +1129,23 @@ open class TTGSnackbarLabel: UILabel {
     
     @objc open dynamic var contentInset: UIEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0) {
         didSet {
-            drawText(in: self.frame)
+            invalidateIntrinsicContentSize()
         }
     }
     
+    open override func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
+        let insetRect = bounds.inset(by: contentInset)
+        let textRect = super.textRect(forBounds: insetRect, limitedToNumberOfLines: numberOfLines)
+        let invertedInsets = UIEdgeInsets(
+            top: -contentInset.top,
+            left: -contentInset.left,
+            bottom: -contentInset.bottom,
+            right: -contentInset.right)
+        return textRect.inset(by: invertedInsets)
+    }
+
     override open func drawText(in rect: CGRect) {
         super.drawText(in: rect.inset(by: contentInset))
-    }
-    
-    override open var intrinsicContentSize: CGSize {
-        let size = super.intrinsicContentSize
-        return CGSize(width: size.width + contentInset.left + contentInset.right,
-                      height: size.height + contentInset.top + contentInset.bottom)
     }
     
 }
